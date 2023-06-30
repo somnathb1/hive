@@ -1,13 +1,24 @@
-## Build Erigon Via Pre-Built Image:
-ARG baseimage=thorax/erigon
-ARG tag=devel
-FROM $baseimage:$tag
+### Build Erigon Locally:
+### Requires a copy of erigon/ -> hive/clients/erigon/
 
-# The upstream erigon container uses a non-root user, but we need
-# to install additional commands, so switch back to root.
-USER root
+## Builder stage: Compiles erigon from a local directory
+FROM golang:1-alpine as builder
 
-RUN apk add --no-cache bash curl jq
+# Default local client path: clients/erigon/<erigon>
+ARG local_path=erigon
+COPY $local_path erigon
+
+RUN apk add bash build-base ca-certificates git \
+    && cd erigon && make erigon \
+    && cp build/bin/erigon /usr/local/bin/erigon
+
+## Final stage: Sets up the environment for running erigon
+FROM alpine:latest
+
+# Copy compiled binary from builder
+COPY --from=builder /usr/local/bin/erigon /usr/local/bin/
+
+RUN apk add --no-cache bash curl jq libstdc++ libgcc
 
 # Create version.txt
 RUN erigon --version | sed -e 's/erigon version \(.*\)/\1/' > /version.txt
