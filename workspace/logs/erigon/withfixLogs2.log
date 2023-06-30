@@ -1,0 +1,164 @@
+Supplied genesis state:
+{
+  "config": {
+    "ethash": {},
+    "chainId": 7,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "terminalTotalDifficulty": 0,
+    "shanghaiTime": 4661
+  },
+  "nonce": "0x0",
+  "timestamp": "0x1234",
+  "extraData": "0x",
+  "gasLimit": "0x2fefd8",
+  "difficulty": "0x0",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0000000000000000000000000000000000000314": {
+      "code": "0x60606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063a223e05d1461006a578063abd1a0cf1461008d578063abfced1d146100d4578063e05c914a14610110578063e6768b451461014c575b610000565b346100005761007761019d565b6040518082815260200191505060405180910390f35b34610000576100be600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101a3565b6040518082815260200191505060405180910390f35b346100005761010e600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506101ed565b005b346100005761014a600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610236565b005b346100005761017960048080359060200190919080359060200190919080359060200190919050506103c4565b60405180848152602001838152602001828152602001935050505060405180910390f35b60005481565b6000600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490505b919050565b80600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055505b5050565b7f6031a8d62d7c95988fa262657cd92107d90ed96e08d8f867d32f26edfe85502260405180905060405180910390a17f47e2689743f14e97f7dcfa5eec10ba1dff02f83b3d1d4b9c07b206cbbda66450826040518082815260200191505060405180910390a1817fa48a6b249a5084126c3da369fbc9b16827ead8cb5cdc094b717d3f1dcd995e2960405180905060405180910390a27f7890603b316f3509577afd111710f9ebeefa15e12f72347d9dffd0d65ae3bade81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a18073ffffffffffffffffffffffffffffffffffffffff167f7efef9ea3f60ddc038e50cccec621f86a0195894dc0520482abf8b5c6b659e4160405180905060405180910390a28181604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a05b5050565b6000600060008585859250925092505b935093509390505600a165627a7a72305820aaf842d0d0c35c45622c5263cbb54813d2974d3999c8c38551d7c613ea2bc1170029",
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000000": "0x0000000000000000000000000000000000000000000000000000000000001234",
+        "0x6661e9d6d8b923d5bbaab1b96e1dd51ff6ea2a93520fdc9eb75d059238b8c5e9": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "balance": "0x0"
+    },
+    "0000000000000000000000000000000000000315": {
+      "code": "0x60606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063ef2769ca1461003e575b610000565b3461000057610078600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190505061007a565b005b8173ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051809050600060405180830381858888f1935050505015610106578173ffffffffffffffffffffffffffffffffffffffff167f30a3c50752f2552dcc2b93f5b96866280816a986c0c0408cb6778b9fa198288f826040518082815260200191505060405180910390a25b5b50505600a165627a7a72305820637991fabcc8abad4294bf2bb615db78fbec4edff1635a2647d3894e2daf6a610029",
+      "balance": "0x9999999999999999999999999999999"
+    },
+    "0000000000000000000000000000000000000316": {
+      "code": "0x444355",
+      "balance": "0x0"
+    },
+    "0000000000000000000000000000000000000317": {
+      "code": "0x600160003555",
+      "balance": "0x0"
+    },
+    "0000000000000000000000000000000000001000": {
+      "code": "0x600160005500",
+      "balance": "0x0"
+    },
+    "0101010101010101010101010101010101010101": {
+      "code": "0x5a600060006000600060004160fff15a90509003601690034355",
+      "balance": "0x0"
+    },
+    "0161e041aad467a890839d5b08b138c1e6373072": {
+      "balance": "0x123450000000000000000"
+    },
+    "0202020202020202020202020202020202020202": {
+      "code": "0x435f55",
+      "balance": "0x0"
+    },
+    "87da6a8c6e9eff15d703fc2773e32f6af8dbe301": {
+      "balance": "0x123450000000000000000"
+    },
+    "b97de4b8c857e4f6bc354f226dc3249aaee49209": {
+      "balance": "0x123450000000000000000"
+    },
+    "c5065c9eeebe6df2c2284d046bfc906501846c51": {
+      "balance": "0x123450000000000000000"
+    },
+    "cf49fda3be353c69b41ed96333cd24302da4556f": {
+      "balance": "0x123450000000000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": null
+}
+Command flags till now:
+--log.console.verbosity=3 --staticpeers enode://9b07a9e6a0c3cff12b5e7171aa89a22fa88b541b784d5ffffd444928486d541c50052829c85b9e8b28018e82cade18feab924b3b40067cd2461f9904fd7fdcbe@172.17.0.4:30303?discport=33520 --nodiscover --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 7
+Initializing database with genesis state...
+[INFO] [06-27|19:08:48.866] logging to file system                   log dir=/erigon-hive-datadir/logs file prefix=erigon log level=info json=false
+[INFO] [06-27|19:08:48.867] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [06-27|19:08:48.875] Re-Opening DB in exclusive mode to apply migrations 
+[INFO] [06-27|19:08:48.881] Apply migration                          name=db_schema_version5
+[INFO] [06-27|19:08:48.887] Applied migration                        name=db_schema_version5
+[INFO] [06-27|19:08:48.887] Apply migration                          name=txs_begin_end
+[INFO] [06-27|19:08:48.892] Applied migration                        name=txs_begin_end
+[INFO] [06-27|19:08:48.892] Apply migration                          name=txs_v3
+[INFO] [06-27|19:08:48.897] Applied migration                        name=txs_v3
+[INFO] [06-27|19:08:48.901] Updated DB schema to                     version=6.1.0
+[INFO] [06-27|19:08:48.922] Writing custom genesis block             hash=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb
+[INFO] [06-27|19:08:48.928] Successfully wrote genesis state         hash=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb
+Loading initial blockchain...
+Warning: chain.rlp not found.
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running erigon with flags  --log.console.verbosity=3 --staticpeers enode://9b07a9e6a0c3cff12b5e7171aa89a22fa88b541b784d5ffffd444928486d541c50052829c85b9e8b28018e82cade18feab924b3b40067cd2461f9904fd7fdcbe@172.17.0.4:30303?discport=33520 --nodiscover --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 7 --http --http.addr=0.0.0.0 --http.api=admin,debug,eth,net,txpool,web3 --ws --authrpc.addr=0.0.0.0 --authrpc.jwtsecret=/jwt.secret --nat=none
+[INFO] [06-27|19:08:49.057] logging to file system                   log dir=/erigon-hive-datadir/logs file prefix=erigon log level=info json=false
+[INFO] [06-27|19:08:49.057] Build info                               git_branch=devel git_tag= git_commit=caf9915fa55cfdd9ff313cc95a2c15e2278f934a
+[INFO] [06-27|19:08:49.058] Maximum peer count                       ETH=100 total=100
+[INFO] [06-27|19:08:49.058] starting HTTP APIs                       APIs=admin,debug,eth,net,txpool,web3
+[INFO] [06-27|19:08:49.058] torrent verbosity                        level=WRN
+[INFO] [06-27|19:08:49.059] Set global gas cap                       cap=50000000
+[INFO] [06-27|19:08:49.085] [Downloader] Runnning with               ipv6-enabled=true ipv4-enabled=true download.rate=16mb upload.rate=4mb
+[INFO] [06-27|19:08:49.085] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+mdbx_setup_dxb:15946 filesize mismatch (expect 135168b/33p, have 2147483648b/524288p)
+[INFO] [06-27|19:08:49.103] Initialised chain configuration          config="{ChainID: 7, Homestead: 0, DAO: <nil>, Tangerine Whistle: 0, Spurious Dragon: 0, Byzantium: 0, Constantinople: 0, Petersburg: 0, Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, Gray Glacier: <nil>, Terminal Total Difficulty: 0, Merge Netsplit: <nil>, Shanghai: 4661, Cancun: <nil>, Prague: <nil>, Engine: ethash}" genesis=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb
+[INFO] [06-27|19:08:49.117] Initialising Ethereum protocol           network=7
+[INFO] [06-27|19:08:49.117] Disk storage enabled for ethash DAGs     dir=/erigon-hive-datadir/ethash-dags count=2
+[INFO] [06-27|19:08:49.128] Starting private RPC server              on=127.0.0.1:9090
+[INFO] [06-27|19:08:49.128] new subscription to logs established 
+[INFO] [06-27|19:08:49.129] rpc filters: subscribing to Erigon events 
+[INFO] [06-27|19:08:49.130] new subscription to newHeaders established 
+[INFO] [06-27|19:08:49.130] New txs subscriber joined 
+[INFO] [06-27|19:08:49.131] Reading JWT secret                       path=/jwt.secret
+[INFO] [06-27|19:08:49.131] HTTP endpoint opened for Engine API      url=[::]:8551 ws=true ws.compression=true
+[INFO] [06-27|19:08:49.131] HTTP endpoint opened                     url=[::]:8545 ws=true ws.compression=true grpc=false
+[INFO] [06-27|19:08:49.140] [txpool] Started 
+[INFO] [06-27|19:08:49.140] [1/15 Snapshots] Fetching torrent files metadata 
+[INFO] [06-27|19:08:49.140] [snapshots] Blocks Stat                  blocks=0k indices=0k alloc=17.4MB sys=48.6MB
+[INFO] [06-27|19:08:49.148] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-27|19:08:49.158] Started P2P networking                   version=67 self=enode://add4f4c2beb1a9ad76da98338318d55db765376317ed3dde75b00933e6d8e0e307c3ef480df3734d2fd1a1891b8f5d4adb6d4018dc55908cec6505462f123b5f@127.0.0.1:0 name=erigon/v2.47.0-dev-caf9915f/linux-amd64/go1.20.5
+[INFO] [06-27|19:08:49.162] Started P2P networking                   version=68 self=enode://add4f4c2beb1a9ad76da98338318d55db765376317ed3dde75b00933e6d8e0e307c3ef480df3734d2fd1a1891b8f5d4adb6d4018dc55908cec6505462f123b5f@127.0.0.1:0 name=erigon/v2.47.0-dev-caf9915f/linux-amd64/go1.20.5
+[INFO] [06-27|19:08:50.427] [SPIDERMAN] stage_headers.go L514 handleNewPayload 
+[INFO] [06-27|19:08:50.427] [2/15 Headers] Handling new payload      height=2 hash=0xff4f0c34c1c4f3f1d7705ebaecd4140aba87aea39fd775d8888642ac75b3da38
+[INFO] [06-27|19:08:50.427] [SPIDERMAN] stage_headers.go L631 shedulePoSDownload 
+[INFO] [06-27|19:08:50.427] [2/15 Headers] Downloading PoS headers... height=1 hash=0x7dd7fc094bfe8e96653f96e2386549603c94898834f55b7f574b4bc061f1acf5 requestId=1
+[INFO] [06-27|19:08:50.446] [5/7 Execution] Completed on             block=1
+[INFO] [06-27|19:08:50.448] [7/7 IntermediateHashes] Regeneration trie hashes started 
+[INFO] [06-27|19:08:50.448] [7/7 IntermediateHashes] Trie root       hash=0x6d5d54a8938ddfb6852d55b625d6eac262956856902f336e57d533814d07101b
+[INFO] [06-27|19:08:50.448] [7/7 IntermediateHashes] Regeneration ended 
+[INFO] [06-27|19:08:50.453] PoS headers verified and saved           requestId=1 fork head=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb
+[INFO] [06-27|19:08:50.463] [5/7 Execution] Completed on             block=2
+[INFO] [06-27|19:08:50.464] [7/7 IntermediateHashes] Regeneration trie hashes started 
+[INFO] [06-27|19:08:50.464] [7/7 IntermediateHashes] Trie root       hash=0x6271871069a3dddd63fff63044c91b25af73283a61c2a523f3d0d7c2d62b3ac0
+[INFO] [06-27|19:08:50.464] [7/7 IntermediateHashes] Regeneration ended 
+[INFO] [06-27|19:08:50.473] [SPIDERMAN] Status @ stage_headers L227: VALID 
+[INFO] [06-27|19:08:50.483] Timings (slower than 50ms)               Headers=1.324s
+[INFO] [06-27|19:08:50.488] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-27|19:08:50.490] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-27|19:08:50.490] [2/15 Headers] Fork choice: chain extension from=0 to=0xc00149a3c8
+[INFO] [06-27|19:08:50.490] [SPIDERMAN] stage_headers.go L433 retuning VALID 
+[INFO] [06-27|19:08:50.493] [SPIDERMAN] Status @ stage_headers L227: VALID 
+[INFO] [06-27|19:08:50.493] [SPIDERMAN] ethbackend L671 payloadStatus - VALID 
+[INFO] [06-27|19:08:50.515] [7/15 Execution] Completed on            block=2
+[INFO] [06-27|19:08:50.520] [9/15 IntermediateHashes] Regeneration trie hashes started 
+[INFO] [06-27|19:08:50.520] [9/15 IntermediateHashes] Trie root      hash=0x6271871069a3dddd63fff63044c91b25af73283a61c2a523f3d0d7c2d62b3ac0
+[INFO] [06-27|19:08:50.520] [9/15 IntermediateHashes] Regeneration ended 
+[INFO] [06-27|19:08:50.548] RPC Daemon notified of new headers       from=0 to=2 hash=0xff4f0c34c1c4f3f1d7705ebaecd4140aba87aea39fd775d8888642ac75b3da38 header sending=13.455µs log sending=311ns
+[INFO] [06-27|19:08:50.552] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-27|19:08:51.569] [SPIDERMAN] stage_headers.go L514 handleNewPayload 
+[INFO] [06-27|19:08:51.569] [2/15 Headers] Handling new payload      height=3 hash=0x896ed3834c83c179da68d16f286b35fd15128a84e021a87498dd0e47af6d4684
+[INFO] [06-27|19:08:51.576] [5/7 Execution] Completed on             block=3
+[INFO] [06-27|19:08:51.577] [SPIDERMAN] Status @ stage_headers L227: VALID 
+[INFO] [06-27|19:08:51.578] Timings (slower than 50ms)               Headers=1.024s
+[INFO] [06-27|19:08:51.578] Tables                                   PlainState=4.0KB AccountChangeSet=4.0KB StorageChangeSet=4.0KB BlockTransaction=0B TransactionLog=0B FreeList=4.0KB ReclaimableSpace=4.0MB
+[INFO] [06-27|19:08:51.578] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-27|19:08:51.598] [2/15 Headers] Fork choice update: flushing in-memory state (built by previous newPayload) 
+[INFO] [06-27|19:08:51.609] RPC Daemon notified of new headers       from=2 to=3 hash=0x896ed3834c83c179da68d16f286b35fd15128a84e021a87498dd0e47af6d4684 header sending=17.162µs log sending=80ns
+[INFO] [06-27|19:08:51.614] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-27|19:08:51.614] [SPIDERMAN] ethbackend L671 payloadStatus - VALID 

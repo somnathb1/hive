@@ -1,0 +1,5 @@
+panic: choose 1 beacon client type
+
+goroutine 1 [running]:
+main.main()
+	/source/engine/main.go:64 +0x1d8

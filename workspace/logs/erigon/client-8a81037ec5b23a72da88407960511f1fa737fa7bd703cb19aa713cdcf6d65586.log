@@ -1,0 +1,655 @@
+Supplied genesis state:
+{
+  "config": {
+    "ethash": {},
+    "chainId": 7,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "berlinBlock": 0,
+    "londonBlock": 0,
+    "terminalTotalDifficulty": 0,
+    "shanghaiTime": 4661
+  },
+  "nonce": "0x0",
+  "timestamp": "0x1234",
+  "extraData": "0x",
+  "gasLimit": "0x2fefd8",
+  "difficulty": "0x0",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {
+    "0000000000000000000000000000000000000314": {
+      "code": "0x60606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063a223e05d1461006a578063abd1a0cf1461008d578063abfced1d146100d4578063e05c914a14610110578063e6768b451461014c575b610000565b346100005761007761019d565b6040518082815260200191505060405180910390f35b34610000576100be600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101a3565b6040518082815260200191505060405180910390f35b346100005761010e600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080359060200190919050506101ed565b005b346100005761014a600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610236565b005b346100005761017960048080359060200190919080359060200190919080359060200190919050506103c4565b60405180848152602001838152602001828152602001935050505060405180910390f35b60005481565b6000600160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490505b919050565b80600160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055505b5050565b7f6031a8d62d7c95988fa262657cd92107d90ed96e08d8f867d32f26edfe85502260405180905060405180910390a17f47e2689743f14e97f7dcfa5eec10ba1dff02f83b3d1d4b9c07b206cbbda66450826040518082815260200191505060405180910390a1817fa48a6b249a5084126c3da369fbc9b16827ead8cb5cdc094b717d3f1dcd995e2960405180905060405180910390a27f7890603b316f3509577afd111710f9ebeefa15e12f72347d9dffd0d65ae3bade81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a18073ffffffffffffffffffffffffffffffffffffffff167f7efef9ea3f60ddc038e50cccec621f86a0195894dc0520482abf8b5c6b659e4160405180905060405180910390a28181604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a05b5050565b6000600060008585859250925092505b935093509390505600a165627a7a72305820aaf842d0d0c35c45622c5263cbb54813d2974d3999c8c38551d7c613ea2bc1170029",
+      "storage": {
+        "0x0000000000000000000000000000000000000000000000000000000000000000": "0x0000000000000000000000000000000000000000000000000000000000001234",
+        "0x6661e9d6d8b923d5bbaab1b96e1dd51ff6ea2a93520fdc9eb75d059238b8c5e9": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "balance": "0x0"
+    },
+    "0000000000000000000000000000000000000315": {
+      "code": "0x60606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063ef2769ca1461003e575b610000565b3461000057610078600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190803590602001909190505061007a565b005b8173ffffffffffffffffffffffffffffffffffffffff166108fc829081150290604051809050600060405180830381858888f1935050505015610106578173ffffffffffffffffffffffffffffffffffffffff167f30a3c50752f2552dcc2b93f5b96866280816a986c0c0408cb6778b9fa198288f826040518082815260200191505060405180910390a25b5b50505600a165627a7a72305820637991fabcc8abad4294bf2bb615db78fbec4edff1635a2647d3894e2daf6a610029",
+      "balance": "0x9999999999999999999999999999999"
+    },
+    "0000000000000000000000000000000000000316": {
+      "code": "0x444355",
+      "balance": "0x0"
+    },
+    "0000000000000000000000000000000000000317": {
+      "code": "0x600160003555",
+      "balance": "0x0"
+    },
+    "0000000000000000000000000000000000001000": {
+      "code": "0x600160005500",
+      "balance": "0x0"
+    },
+    "0101010101010101010101010101010101010101": {
+      "code": "0x5a600060006000600060004160fff15a90509003601690034355",
+      "balance": "0x0"
+    },
+    "0161e041aad467a890839d5b08b138c1e6373072": {
+      "balance": "0x123450000000000000000"
+    },
+    "0202020202020202020202020202020202020202": {
+      "code": "0x435f55",
+      "balance": "0x0"
+    },
+    "87da6a8c6e9eff15d703fc2773e32f6af8dbe301": {
+      "balance": "0x123450000000000000000"
+    },
+    "b97de4b8c857e4f6bc354f226dc3249aaee49209": {
+      "balance": "0x123450000000000000000"
+    },
+    "c5065c9eeebe6df2c2284d046bfc906501846c51": {
+      "balance": "0x123450000000000000000"
+    },
+    "cf49fda3be353c69b41ed96333cd24302da4556f": {
+      "balance": "0x123450000000000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": null
+}
+Command flags till now:
+--log.console.verbosity=3 --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 7
+Initializing database with genesis state...
+[INFO] [06-29|19:07:09.502] logging to file system                   log dir=/erigon-hive-datadir/logs file prefix=erigon log level=info json=false
+[INFO] [06-29|19:07:09.502] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+[INFO] [06-29|19:07:09.510] Re-Opening DB in exclusive mode to apply migrations 
+[INFO] [06-29|19:07:09.516] Apply migration                          name=db_schema_version5
+[INFO] [06-29|19:07:09.519] Applied migration                        name=db_schema_version5
+[INFO] [06-29|19:07:09.519] Apply migration                          name=txs_begin_end
+[INFO] [06-29|19:07:09.523] Applied migration                        name=txs_begin_end
+[INFO] [06-29|19:07:09.523] Apply migration                          name=txs_v3
+[INFO] [06-29|19:07:09.526] Applied migration                        name=txs_v3
+[INFO] [06-29|19:07:09.530] Updated DB schema to                     version=6.1.0
+[INFO] [06-29|19:07:09.549] Writing custom genesis block             hash=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb
+[INFO] [06-29|19:07:09.554] Successfully wrote genesis state         hash=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb
+Loading initial blockchain...
+Warning: chain.rlp not found.
+Loading remaining individual blocks...
+Warning: blocks folder not found.
+Running erigon with flags  --log.console.verbosity=3 --datadir /erigon-hive-datadir --db.size.limit 2GB --networkid 7 --http --http.addr=0.0.0.0 --http.api=admin,debug,eth,net,txpool,web3 --ws --authrpc.addr=0.0.0.0 --authrpc.jwtsecret=/jwt.secret --nat=none
+[INFO] [06-29|19:07:09.702] logging to file system                   log dir=/erigon-hive-datadir/logs file prefix=erigon log level=info json=false
+[INFO] [06-29|19:07:09.702] Build info                               git_branch=devel git_tag= git_commit=caf9915fa55cfdd9ff313cc95a2c15e2278f934a
+[INFO] [06-29|19:07:09.703] Maximum peer count                       ETH=100 total=100
+[INFO] [06-29|19:07:09.703] starting HTTP APIs                       APIs=admin,debug,eth,net,txpool,web3
+[INFO] [06-29|19:07:09.703] torrent verbosity                        level=WRN
+[INFO] [06-29|19:07:09.704] Set global gas cap                       cap=50000000
+[INFO] [06-29|19:07:09.738] [Downloader] Runnning with               ipv6-enabled=true ipv4-enabled=true download.rate=16mb upload.rate=4mb
+[INFO] [06-29|19:07:09.738] [SPIDERMAN] eth/bakcend 195 New -  
+[INFO] [06-29|19:07:09.738] Opening Database                         label=chaindata path=/erigon-hive-datadir/chaindata
+mdbx_setup_dxb:15946 filesize mismatch (expect 135168b/33p, have 2147483648b/524288p)
+[INFO] [06-29|19:07:09.752] Initialised chain configuration          config="{ChainID: 7, Homestead: 0, DAO: <nil>, Tangerine Whistle: 0, Spurious Dragon: 0, Byzantium: 0, Constantinople: 0, Petersburg: 0, Istanbul: 0, Muir Glacier: 0, Berlin: 0, London: 0, Arrow Glacier: <nil>, Gray Glacier: <nil>, Terminal Total Difficulty: 0, Merge Netsplit: <nil>, Shanghai: 4661, Cancun: <nil>, Prague: <nil>, Engine: ethash}" genesis=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb
+[INFO] [06-29|19:07:09.769] Initialising Ethereum protocol           network=7
+[INFO] [06-29|19:07:09.769] Disk storage enabled for ethash DAGs     dir=/erigon-hive-datadir/ethash-dags count=2
+[INFO] [06-29|19:07:09.769] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:09.780] [SPIDERMAN] eth/bakcend 532 begin PoS mining -  
+[INFO] [06-29|19:07:09.780] Starting private RPC server              on=127.0.0.1:9090
+[INFO] [06-29|19:07:09.780] new subscription to logs established 
+[INFO] [06-29|19:07:09.780] [SPIDERMAN] stageloop NewDefaultStages 
+[INFO] [06-29|19:07:09.780] [SPIDERMAN] eth/bakcend 708 Init -  
+[INFO] [06-29|19:07:09.780] rpc filters: subscribing to Erigon events 
+[INFO] [06-29|19:07:09.780] [SPIDERMAN] eth/bakcend 1069 Start -  
+[INFO] [06-29|19:07:09.780] [SPIDERMAN] eth/bakcend 1069 Start -  
+[INFO] [06-29|19:07:09.780] New txs subscriber joined 
+[INFO] [06-29|19:07:09.780] new subscription to newHeaders established 
+[INFO] [06-29|19:07:09.781] Reading JWT secret                       path=/jwt.secret
+[INFO] [06-29|19:07:09.781] HTTP endpoint opened for Engine API      url=[::]:8551 ws=true ws.compression=true
+[INFO] [06-29|19:07:09.782] HTTP endpoint opened                     url=[::]:8545 ws=true ws.compression=true grpc=false
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] stageloop 80 
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] stageloop stageLoopStep 
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] stageloop stagesHeadersAndFinish 
+[INFO] [06-29|19:07:09.791] [txpool] Started 
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] stageloop L149               canRunCycleInOneTransaction=false
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] stageloop BeforeRun 
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:09.791] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Snapshots BlockNumber:0}"
+[INFO] [06-29|19:07:09.791] [1/15 Snapshots] Fetching torrent files metadata 
+[INFO] [06-29|19:07:09.791] [snapshots] Blocks Stat                  blocks=0k indices=0k alloc=22.3MB sys=49.1MB
+[INFO] [06-29|19:07:09.796] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:09.796] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Headers BlockNumber:0}"
+[INFO] [06-29|19:07:09.796] [SPIDERMAN] header_algos AddHeadersFromSnapshot 
+[INFO] [06-29|19:07:09.796] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-29|19:07:09.817] Started P2P networking                   version=68 self=enode://2dfbfc8b5b8abad3629807e270989392fcc9f4bd31e87370c3bd7119a45a81c20697134cc5b46895622a5e3a4cefd85dc1fb3c651c90738b9c93399e46362f3a@127.0.0.1:0 name=erigon/v2.47.0-dev-caf9915f/linux-amd64/go1.20.5
+[INFO] [06-29|19:07:09.824] Started P2P networking                   version=67 self=enode://2dfbfc8b5b8abad3629807e270989392fcc9f4bd31e87370c3bd7119a45a81c20697134cc5b46895622a5e3a4cefd85dc1fb3c651c90738b9c93399e46362f3a@127.0.0.1:0 name=erigon/v2.47.0-dev-caf9915f/linux-amd64/go1.20.5
+[INFO] [06-29|19:07:11.060] [SPIDERMAN] RECEIVED REQUEST engine_api ForkchoiceUpdatedV2 
+[INFO] [06-29|19:07:11.061] Received ForkchoiceUpdated [build]       version=2 head=0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb safe=0x0000000000000000000000000000000000000000000000000000000000000000 finalized=0x0000000000000000000000000000000000000000000000000000000000000000 timestamp=0x1235 prevRandao=0x61630890d9805897dddab509cf9e033598da70bf761bef0c9916506195165709 suggestedFeeRecipient=0x0000000000000000000000000000000000000000 withdrawals="[{Index:0 Validator:0 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:1 Validator:1 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:2 Validator:2 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:3 Validator:3 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:4 Validator:4 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:5 Validator:5 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:6 Validator:6 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:7 Validator:7 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:8 Validator:8 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:9 Validator:9 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:10 Validator:10 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:11 Validator:11 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:12 Validator:12 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:13 Validator:13 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:14 Validator:14 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:15 Validator:15 Address:0x0000000000000000000000000000000000001000 Amount:1}]"
+[INFO] [06-29|19:07:11.061] [SPIDERMAN] stage_headers 293 startHandlinForkChoice 
+[INFO] [06-29|19:07:11.061] [SPIDERMAN] stage_headers.go L322 returning status VALID 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] Status @ stage_headers L227: VALID 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] Status writing to PayloadStatusCh L229: VALID 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CumulativeIndex BlockNumber:0}"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] stage_cumulative_index 37 Spawn  
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] ethbackend L671 payloadStatus - VALID 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:BlockHashes BlockNumber:0}"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] stage_blockhashes 33 Spawn 
+[INFO] [06-29|19:07:11.066] [ForkChoiceUpdated] BlockBuilder added   payload=1
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] engine_api convertPayloadStatus 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] engine_api L231 received payloadStatus reply from EngineForkchoiceUpdated  payloadStatus="map[latestValidHash:0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb status:VALID]"
+[INFO] [06-29|19:07:11.066] Building block... 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] RETURNING RESPONSE  engine_api ForkchoiceUpdated json="map[payloadId:0x0000000000000001 payloadStatus:map[latestValidHash:0xa5e378a701c221961162b8f4fe09359ab91ad22a963f302f4e3f3e173250e0eb status:VALID]]"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Bodies BlockNumber:0}"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] eth/bakcend 535 assembleBlockPOS -  
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] stage_bodies 61  
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] stageloop MiningStep 
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.066] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Senders BlockNumber:0}"
+[INFO] [06-29|19:07:11.067] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=0 stage=Senders
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Execution BlockNumber:0}"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] stage_execute 362 SpawnExecuteBlockStage  
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:HashState BlockNumber:0}"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:IntermediateHashes BlockNumber:0}"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CallTraces BlockNumber:0}"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] stage_call_traces 50 Spawn 
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:AccountHistoryIndex BlockNumber:0}"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:StorageHistoryIndex BlockNumber:0}"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.075] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:LogIndex BlockNumber:0}"
+[INFO] [06-29|19:07:11.076] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.076] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:TxLookup BlockNumber:0}"
+[INFO] [06-29|19:07:11.076] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=0 stage=TxLookup
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a480 ID:MiningCreateBlock BlockNumber:0}"
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] stageBuilder.go L33 for  SpawnMiningCreateBlockStage  
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] stage_mining_create_block 94 Spawn 
+[INFO] [06-29|19:07:11.077] [1/5 MiningCreateBlock] Start mine       block=1 baseFee=875000000 gasLimit=3144658
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a480 ID:MiningExecution BlockNumber:0}"
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] stageBuilder.go L43 for  SpawnMiningCreateBlockStage  
+[INFO] [06-29|19:07:11.077] [SPIDERMAN] stage_mining_exec 83 Spawn 
+[INFO] [06-29|19:07:11.080] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.080] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Finish BlockNumber:0}"
+[INFO] [06-29|19:07:11.080] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:11.080] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:11.080] [SPIDERMAN] stageloop AfterRun 
+[INFO] [06-29|19:07:11.080] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:11.080] Timings (slower than 50ms)               Headers=1.27s
+[INFO] [06-29|19:07:11.080] [SPIDERMAN] stageloop stageLoopStepPrune 
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] stageloop 95 db.View cb - possible culprit 
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] stageloop 40 SendPayloadStatus  
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] stageloop stageLoopStep 
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] stageloop stagesHeadersAndFinish 
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] stageloop L149               canRunCycleInOneTransaction=false
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] stageloop BeforeRun 
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Snapshots BlockNumber:0}"
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.086] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Headers BlockNumber:0}"
+[INFO] [06-29|19:07:11.086] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-29|19:07:11.088] [SPIDERMAN] blockchain 324 FinalizeBlockExecution  
+[INFO] [06-29|19:07:11.088] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Execution
+[INFO] [06-29|19:07:11.094] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.095] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a480 ID:HashState BlockNumber:0}"
+[INFO] [06-29|19:07:11.095] [SPIDERMAN] stageBuilder.go L53 for  SpawnHashStateStage  
+[INFO] [06-29|19:07:11.095] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:11.095] [SPIDERMAN] stage_hashstate 197 promotePlainState 
+[INFO] [06-29|19:07:11.097] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=HashState
+[INFO] [06-29|19:07:11.097] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.097] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a480 ID:IntermediateHashes BlockNumber:0}"
+[INFO] [06-29|19:07:11.097] [SPIDERMAN] stageBuilder.go L63 for  SpawnIntermediateHashesStage  
+[INFO] [06-29|19:07:11.098] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:11.098] [4/5 IntermediateHashes] Regeneration trie hashes started 
+[INFO] [06-29|19:07:11.098] [4/5 IntermediateHashes] Trie root       hash=0x6d5d54a8938ddfb6852d55b625d6eac262956856902f336e57d533814d07101b
+[INFO] [06-29|19:07:11.098] [4/5 IntermediateHashes] Regeneration ended 
+[INFO] [06-29|19:07:11.098] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=IntermediateHashes
+[INFO] [06-29|19:07:11.098] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:11.098] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a480 ID:MiningFinish BlockNumber:0}"
+[INFO] [06-29|19:07:11.098] [SPIDERMAN] stageBuilder.go L78 for  SpawnMiningFinishStage  
+[INFO] [06-29|19:07:11.098] [SPIDERMAN] stage_mining_finish 45 Spawn 
+[INFO] [06-29|19:07:11.098] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:11.104] Built block                              hash=0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 height=1 txs=0 gas used %=0.000 time=37.968394ms
+[INFO] [06-29|19:07:12.069] Received GetPayloadV2                    payloadId=1
+[INFO] [06-29|19:07:12.071] [SPIDERMAN] RECEIVED REQUEST engine_api NewPayloadV2 
+[INFO] [06-29|19:07:12.071] [SPIDERMAN] engine_api L263 newPayload start 
+[INFO] [06-29|19:07:12.071] [SPIDERMAN] ethbackend L304 EngineNewPayload start 
+[INFO] [06-29|19:07:12.071] [SPIDERMAN] ethbackend L393 added block to payload request, waiting for PayloadStatusCh  
+[INFO] [06-29|19:07:12.071] [SPIDERMAN] stage_headers.go L514 handleNewPayload 
+[INFO] [06-29|19:07:12.071] [2/15 Headers] Handling new payload      height=1 hash=0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6
+[INFO] [06-29|19:07:12.071] [SPIDERMAN] stage_headers verifyAndSaveNewPoSHeader 
+[INFO] [06-29|19:07:12.071] [SPIDERMAN] fork_validator ValidatePayload 
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] fork_validator 274 validateAndStorePayload 
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] eth/bakcend 419 inMemoryExecution -  
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] stageloop NewInMemoryExecution 
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] stageloop StateStep 
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Headers
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.078] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000b3a780 ID:Headers BlockNumber:1}"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000b3a780 ID:Bodies BlockNumber:0}"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage_bodies 61  
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage_bodies 133 loopBody  
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] body_algos RequestMoreBodies 
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] body_algos checkPrefetchedBlock 
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Bodies
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000b3a780 ID:BlockHashes BlockNumber:0}"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage_blockhashes 33 Spawn 
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=BlockHashes
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000b3a780 ID:Senders BlockNumber:0}"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Senders
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000b3a780 ID:Execution BlockNumber:0}"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage_execute 362 SpawnExecuteBlockStage  
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage_execute 141 executeBlock 
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] blockchain 82 ExecuteBlockEphemerally  
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] blockchain 349 InitializeBlockExecution  
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] blockchain 324 FinalizeBlockExecution  
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Execution
+[INFO] [06-29|19:07:12.079] [5/7 Execution] Completed on             block=1
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000b3a780 ID:HashState BlockNumber:0}"
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:12.079] [SPIDERMAN] stage_hashstate 197 promotePlainState 
+[INFO] [06-29|19:07:12.081] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=HashState
+[INFO] [06-29|19:07:12.081] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.081] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000b3a780 ID:IntermediateHashes BlockNumber:0}"
+[INFO] [06-29|19:07:12.081] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.081] [7/7 IntermediateHashes] Regeneration trie hashes started 
+[INFO] [06-29|19:07:12.081] [7/7 IntermediateHashes] Trie root       hash=0x6d5d54a8938ddfb6852d55b625d6eac262956856902f336e57d533814d07101b
+[INFO] [06-29|19:07:12.081] [7/7 IntermediateHashes] Regeneration ended 
+[INFO] [06-29|19:07:12.081] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=IntermediateHashes
+[INFO] [06-29|19:07:12.081] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] Status @ stage_headers L227: VALID 
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] Status writing to PayloadStatusCh L229: VALID 
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CumulativeIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] stage_cumulative_index 37 Spawn  
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] ethbackend L304 EngineNewPayload end  payloadStatus="{Status:VALID LatestValidHash:0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 ValidationError:<nil> CriticalError:<nil>}"
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] engine_api L314 newPayload end 
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:BlockHashes BlockNumber:0}"
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] stage_blockhashes 33 Spawn 
+[INFO] [06-29|19:07:12.086] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.087] [SPIDERMAN] engine_api convertPayloadStatus 
+[INFO] [06-29|19:07:12.087] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Bodies BlockNumber:0}"
+[INFO] [06-29|19:07:12.087] [SPIDERMAN] stage_bodies 61  
+[INFO] [06-29|19:07:12.087] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:12.087] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.087] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Senders BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=0 stage=Senders
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Execution BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_execute 362 SpawnExecuteBlockStage  
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:HashState BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:IntermediateHashes BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CallTraces BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_call_traces 50 Spawn 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:AccountHistoryIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:StorageHistoryIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:LogIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:TxLookup BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=0 stage=TxLookup
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Finish BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop AfterRun 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] RECEIVED REQUEST engine_api ForkchoiceUpdatedV2 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:12.088] Timings (slower than 50ms)               Headers=1s
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop stageLoopStepPrune 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop 95 db.View cb - possible culprit 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop 40 SendPayloadStatus  
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop stageLoopStep 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop stagesHeadersAndFinish 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop L149               canRunCycleInOneTransaction=false
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] stageloop BeforeRun 
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Snapshots BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.088] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Headers BlockNumber:0}"
+[INFO] [06-29|19:07:12.088] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-29|19:07:12.089] [SPIDERMAN] stage_headers 293 startHandlinForkChoice 
+[INFO] [06-29|19:07:12.089] [2/15 Headers] Fork choice update: flushing in-memory state (built by previous newPayload) 
+[INFO] [06-29|19:07:12.098] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.099] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CumulativeIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.099] [SPIDERMAN] stage_cumulative_index 37 Spawn  
+[INFO] [06-29|19:07:12.099] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=CumulativeIndex
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:BlockHashes BlockNumber:1}"
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] stage_blockhashes 33 Spawn 
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Bodies BlockNumber:1}"
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] stage_bodies 61  
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Senders BlockNumber:1}"
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Senders
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.103] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Execution BlockNumber:1}"
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] stage_execute 362 SpawnExecuteBlockStage  
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:HashState BlockNumber:1}"
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:IntermediateHashes BlockNumber:1}"
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CallTraces BlockNumber:0}"
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] stage_call_traces 50 Spawn 
+[INFO] [06-29|19:07:12.104] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=CallTraces
+[INFO] [06-29|19:07:12.108] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.108] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:AccountHistoryIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.108] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.108] [SPIDERMAN] stage_indexes promoteHistory 
+[INFO] [06-29|19:07:12.110] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=AccountHistoryIndex
+[INFO] [06-29|19:07:12.120] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.120] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:StorageHistoryIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.120] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.120] [SPIDERMAN] stage_indexes promoteHistory 
+[INFO] [06-29|19:07:12.121] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=StorageHistoryIndex
+[INFO] [06-29|19:07:12.126] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.126] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:LogIndex BlockNumber:0}"
+[INFO] [06-29|19:07:12.126] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=LogIndex
+[INFO] [06-29|19:07:12.131] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.131] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:TxLookup BlockNumber:0}"
+[INFO] [06-29|19:07:12.131] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=TxLookup
+[INFO] [06-29|19:07:12.136] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.136] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Finish BlockNumber:0}"
+[INFO] [06-29|19:07:12.136] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:12.136] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Finish
+[INFO] [06-29|19:07:12.141] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:12.141] [SPIDERMAN] stageloop AfterRun 
+[INFO] [06-29|19:07:12.141] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:12.141] RPC Daemon notified of new headers       from=0 to=1 hash=0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 header sending=31.068µs log sending=281ns
+[INFO] [06-29|19:07:12.141] [SPIDERMAN] stageloop stageLoopStepPrune 
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] stageloop 95 db.View cb - possible culprit 
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] stageloop 40 SendPayloadStatus  
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] stageloop stageLoopStep 
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] stageloop stagesHeadersAndFinish 
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] stageloop L149               canRunCycleInOneTransaction=true
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] stageloop BeforeRun 
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] ethbackend L671 payloadStatus - VALID 
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] engine_api convertPayloadStatus 
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] engine_api L231 received payloadStatus reply from EngineForkchoiceUpdated  payloadStatus="map[latestValidHash:0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 status:VALID]"
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Snapshots BlockNumber:0}"
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] RETURNING RESPONSE  engine_api ForkchoiceUpdated json="map[payloadStatus:map[latestValidHash:0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 status:VALID]]"
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Snapshots
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.146] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Headers BlockNumber:1}"
+[INFO] [06-29|19:07:12.146] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-29|19:07:12.148] [SPIDERMAN] RECEIVED REQUEST engine_api ForkchoiceUpdatedV2 
+[INFO] [06-29|19:07:12.148] Received ForkchoiceUpdated [build]       version=2 head=0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 safe=0x0000000000000000000000000000000000000000000000000000000000000000 finalized=0x0000000000000000000000000000000000000000000000000000000000000000 timestamp=0x1236 prevRandao=0x7e1c59ec4c5a44e6e7122e019632ba1a2ce5731138b7927e895f69aa789b6abb suggestedFeeRecipient=0x0000000000000000000000000000000000000000 withdrawals="[{Index:16 Validator:16 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:17 Validator:17 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:18 Validator:18 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:19 Validator:19 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:20 Validator:20 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:21 Validator:21 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:22 Validator:22 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:23 Validator:23 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:24 Validator:24 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:25 Validator:25 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:26 Validator:26 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:27 Validator:27 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:28 Validator:28 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:29 Validator:29 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:30 Validator:30 Address:0x0000000000000000000000000000000000001000 Amount:1} {Index:31 Validator:31 Address:0x0000000000000000000000000000000000001000 Amount:1}]"
+[INFO] [06-29|19:07:12.149] [ForkChoiceUpdated] BlockBuilder added   payload=2
+[INFO] [06-29|19:07:12.149] Building block... 
+[INFO] [06-29|19:07:12.149] [SPIDERMAN] engine_api convertPayloadStatus 
+[INFO] [06-29|19:07:12.149] [SPIDERMAN] eth/bakcend 535 assembleBlockPOS -  
+[INFO] [06-29|19:07:12.149] [SPIDERMAN] engine_api L231 received payloadStatus reply from EngineForkchoiceUpdated  payloadStatus="map[latestValidHash:0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 status:VALID]"
+[INFO] [06-29|19:07:12.149] [SPIDERMAN] RETURNING RESPONSE  engine_api ForkchoiceUpdated json="map[payloadId:0x0000000000000002 payloadStatus:map[latestValidHash:0x0a5287421773498b3d8c5180cdaf5b9b33f10b074aabf5b0917be8c630aa04e6 status:VALID]]"
+[INFO] [06-29|19:07:12.149] [SPIDERMAN] stageloop MiningStep 
+[INFO] [06-29|19:07:12.155] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:12.155] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.155] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a3c0 ID:MiningCreateBlock BlockNumber:0}"
+[INFO] [06-29|19:07:12.155] [SPIDERMAN] stageBuilder.go L33 for  SpawnMiningCreateBlockStage  
+[INFO] [06-29|19:07:12.155] [SPIDERMAN] stage_mining_create_block 94 Spawn 
+[INFO] [06-29|19:07:12.156] [1/5 MiningCreateBlock] Start mine       block=2 baseFee=765625000 gasLimit=3147727
+[INFO] [06-29|19:07:12.156] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.156] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a3c0 ID:MiningExecution BlockNumber:0}"
+[INFO] [06-29|19:07:12.156] [SPIDERMAN] stageBuilder.go L43 for  SpawnMiningCreateBlockStage  
+[INFO] [06-29|19:07:12.156] [SPIDERMAN] stage_mining_exec 83 Spawn 
+[INFO] [06-29|19:07:12.165] [SPIDERMAN] blockchain 324 FinalizeBlockExecution  
+[INFO] [06-29|19:07:12.165] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Execution
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a3c0 ID:HashState BlockNumber:1}"
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] stageBuilder.go L53 for  SpawnHashStateStage  
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=HashState
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a3c0 ID:IntermediateHashes BlockNumber:1}"
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] stageBuilder.go L63 for  SpawnIntermediateHashesStage  
+[INFO] [06-29|19:07:12.171] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:12.172] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=IntermediateHashes
+[INFO] [06-29|19:07:12.172] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:12.172] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc00095a3c0 ID:MiningFinish BlockNumber:0}"
+[INFO] [06-29|19:07:12.172] [SPIDERMAN] stageBuilder.go L78 for  SpawnMiningFinishStage  
+[INFO] [06-29|19:07:12.172] [SPIDERMAN] stage_mining_finish 45 Spawn 
+[INFO] [06-29|19:07:12.172] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:12.179] Built block                              hash=0x7cceba49ce3cfa48c365428eac72ce7f39c3349eb67b5238f624df4ac819e711 height=2 txs=0 gas used %=0.000 time=30.078949ms
+[INFO] [06-29|19:07:13.150] Received GetPayloadV2                    payloadId=2
+[INFO] [06-29|19:07:13.152] [SPIDERMAN] RECEIVED REQUEST engine_api NewPayloadV2 
+[INFO] [06-29|19:07:13.152] [SPIDERMAN] engine_api L263 newPayload start 
+[INFO] [06-29|19:07:13.152] [SPIDERMAN] ethbackend L304 EngineNewPayload start 
+[INFO] [06-29|19:07:13.152] [SPIDERMAN] ethbackend L393 added block to payload request, waiting for PayloadStatusCh  
+[INFO] [06-29|19:07:13.152] [SPIDERMAN] stage_headers.go L514 handleNewPayload 
+[INFO] [06-29|19:07:13.152] [2/15 Headers] Handling new payload      height=2 hash=0x7cceba49ce3cfa48c365428eac72ce7f39c3349eb67b5238f624df4ac819e711
+[INFO] [06-29|19:07:13.152] [SPIDERMAN] stage_headers verifyAndSaveNewPoSHeader 
+[INFO] [06-29|19:07:13.152] [SPIDERMAN] fork_validator ValidatePayload 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] fork_validator 274 validateAndStorePayload 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] eth/bakcend 419 inMemoryExecution -  
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stageloop NewInMemoryExecution 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stageloop StateStep 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Headers
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000600 ID:Headers BlockNumber:2}"
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000600 ID:Bodies BlockNumber:1}"
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stage_bodies 61  
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stage_bodies 133 loopBody  
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] body_algos RequestMoreBodies 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] body_algos checkPrefetchedBlock 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Bodies
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000600 ID:BlockHashes BlockNumber:1}"
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stage_blockhashes 33 Spawn 
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=BlockHashes
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.159] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000600 ID:Senders BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Senders
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000600 ID:Execution BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_execute 362 SpawnExecuteBlockStage  
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_execute 141 executeBlock 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] blockchain 82 ExecuteBlockEphemerally  
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] blockchain 349 InitializeBlockExecution  
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] blockchain 324 FinalizeBlockExecution  
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Execution
+[INFO] [06-29|19:07:13.160] [5/7 Execution] Completed on             block=2
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000600 ID:HashState BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=HashState
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000600 ID:IntermediateHashes BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=IntermediateHashes
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] Status @ stage_headers L227: VALID 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CumulativeIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_cumulative_index 37 Spawn  
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:BlockHashes BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_blockhashes 33 Spawn 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Bodies BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_bodies 61  
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Senders BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=Senders
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Execution BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_execute 362 SpawnExecuteBlockStage  
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:HashState BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:IntermediateHashes BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CallTraces BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_call_traces 50 Spawn 
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:AccountHistoryIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.160] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:StorageHistoryIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:LogIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:TxLookup BlockNumber:1}"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=1 stage=TxLookup
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Finish BlockNumber:1}"
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:13.161] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop 190 committed      at=2023-06-29T19:07:13+0000
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop AfterRun 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:13.162] Timings (slower than 50ms)               Headers=1.014s
+[INFO] [06-29|19:07:13.162] Tables                                   PlainState=4.0KB AccountChangeSet=4.0KB StorageChangeSet=4.0KB BlockTransaction=0B TransactionLog=0B FreeList=4.0KB ReclaimableSpace=4.0MB
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop stageLoopStepPrune 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop 95 db.View cb - possible culprit 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop 40 SendPayloadStatus  
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop stageLoopStep 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop stagesHeadersAndFinish 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop L149               canRunCycleInOneTransaction=true
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] stageloop BeforeRun 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Snapshots BlockNumber:1}"
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] ethbackend L304 EngineNewPayload end  payloadStatus="{Status:VALID LatestValidHash:0x7cceba49ce3cfa48c365428eac72ce7f39c3349eb67b5238f624df4ac819e711 ValidationError:<nil> CriticalError:<nil>}"
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] engine_api L314 newPayload end 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] engine_api convertPayloadStatus 
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.162] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Headers BlockNumber:1}"
+[INFO] [06-29|19:07:13.162] [2/15 Headers] Waiting for Consensus Layer... 
+[INFO] [06-29|19:07:13.163] [SPIDERMAN] RECEIVED REQUEST engine_api ForkchoiceUpdatedV2 
+[INFO] [06-29|19:07:13.163] [SPIDERMAN] stage_headers 293 startHandlinForkChoice 
+[INFO] [06-29|19:07:13.163] [2/15 Headers] Fork choice update: flushing in-memory state (built by previous newPayload) 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CumulativeIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_cumulative_index 37 Spawn  
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=CumulativeIndex
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:BlockHashes BlockNumber:2}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_blockhashes 33 Spawn 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Bodies BlockNumber:2}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_bodies 61  
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] body_algos UpdateFromDb 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Senders BlockNumber:2}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Senders
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Execution BlockNumber:2}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_execute 362 SpawnExecuteBlockStage  
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:HashState BlockNumber:2}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_hashstate 50 Spawn 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:IntermediateHashes BlockNumber:2}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:CallTraces BlockNumber:1}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_call_traces 50 Spawn 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=CallTraces
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:AccountHistoryIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage_indexes promoteHistory 
+[INFO] [06-29|19:07:13.169] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=AccountHistoryIndex
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:StorageHistoryIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] stage_indexes SpawnStorageHistoryIndex 
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] stage_indexes promoteHistory 
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=StorageHistoryIndex
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:LogIndex BlockNumber:1}"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=LogIndex
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:TxLookup BlockNumber:1}"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=TxLookup
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Finish BlockNumber:1}"
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Finish
+[INFO] [06-29|19:07:13.170] [SPIDERMAN] sync Stages run END 
+[INFO] [06-29|19:07:13.174] [SPIDERMAN] stageloop 190 committed      at=2023-06-29T19:07:13+0000
+[INFO] [06-29|19:07:13.174] [SPIDERMAN] stageloop AfterRun 
+[INFO] [06-29|19:07:13.174] [SPIDERMAN] stage_finish 44 FinishForward 
+[INFO] [06-29|19:07:13.174] RPC Daemon notified of new headers       from=1 to=2 hash=0x7cceba49ce3cfa48c365428eac72ce7f39c3349eb67b5238f624df4ac819e711 header sending=27.662µs log sending=341ns
+[INFO] [06-29|19:07:13.174] [SPIDERMAN] stageloop stageLoopStepPrune 
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] stageloop 95 db.View cb - possible culprit 
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] stageloop 40 SendPayloadStatus  
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] stageloop stageLoopStep 
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] stageloop stagesHeadersAndFinish 
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] stageloop L149               canRunCycleInOneTransaction=true
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] ethbackend L671 payloadStatus - VALID 
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] stageloop BeforeRun 
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] engine_api convertPayloadStatus 
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] engine_api L231 received payloadStatus reply from EngineForkchoiceUpdated  payloadStatus="map[latestValidHash:0x7cceba49ce3cfa48c365428eac72ce7f39c3349eb67b5238f624df4ac819e711 status:VALID]"
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] RETURNING RESPONSE  engine_api ForkchoiceUpdated json="map[payloadStatus:map[latestValidHash:0x7cceba49ce3cfa48c365428eac72ce7f39c3349eb67b5238f624df4ac819e711 status:VALID]]"
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] sync.go 217 Run  
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Snapshots BlockNumber:1}"
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] stage.go L 90 SaveStageProgress  progress=2 stage=Snapshots
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] sync L250 Stage run          LOG15_ERROR= LOG15_ERROR="Normalized odd number of arguments by adding nil"
+[INFO] [06-29|19:07:13.180] [SPIDERMAN] sync.go  runStage            stageState="&{state:0xc000000540 ID:Headers BlockNumber:2}"
+[INFO] [06-29|19:07:13.180] [2/15 Headers] Waiting for Consensus Layer... 
