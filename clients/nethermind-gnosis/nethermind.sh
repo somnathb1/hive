@@ -50,8 +50,9 @@ set -e
 # Generate JWT file if necessary
 if [ "$HIVE_TERMINAL_TOTAL_DIFFICULTY" != "" ]; then
     JWT_SECRET="0x7365637265747365637265747365637265747365637265747365637265747365"
-    echo -n $JWT_SECRET > /jwt.secret
+    echo -n $JWT_SECRET > /nethermind/keystore/jwt-secret
 fi
+
 
 # Generate the genesis and chainspec file.
 mkdir -p /chainspec
@@ -67,8 +68,8 @@ else
 fi
 
 # Generate the config file.
-mkdir /configs
-jq -n -f /mkconfig.jq > /configs/test.cfg
+# mkdir /configs
+# jq -n -f /mkconfig.jq > /configs/test.cfg
 
 echo "test.cfg"
 cat /configs/test.cfg
