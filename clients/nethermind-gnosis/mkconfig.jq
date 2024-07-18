@@ -88,7 +88,7 @@ def base_config:
       "WebSocketsEnabled": true,
       "IsMining": (env.HIVE_MINER != null),
       "UseMemDb": true,
-      "ChainSpecPath": "/chainspec/test.json",
+      "ChainSpecPath": "/genesis.json",
       "BaseDbPath": "nethermind_db/hive",
       "LogFileName": "/hive.logs.txt"
     },

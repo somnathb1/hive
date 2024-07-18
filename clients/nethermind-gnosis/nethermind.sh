@@ -58,13 +58,19 @@ fi
 mkdir -p /chainspec
 jq -f /mapper.jq /genesis.json > /chainspec/test.json
 
+echo "==="
+echo "Original genesis:"
+cat /genesis.json
+echo "==="
 # Dump genesis. 
 if [ "$HIVE_LOGLEVEL" -lt 4 ]; then
     echo "Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):"
     jq 'del(.accounts[] | select(.balance == "0x123450000000000000000" or has("builtin")))' /chainspec/test.json
 else
+   echo "==="
     echo "Supplied genesis state:"
     cat /chainspec/test.json
+    echo "==="
 fi
 
 # Generate the config file.
