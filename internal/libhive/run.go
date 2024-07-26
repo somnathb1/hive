@@ -206,6 +206,7 @@ func (r *Runner) run(ctx context.Context, sim string, env SimEnv) (SimResult, er
 			"HIVE_LOGLEVEL":     strconv.Itoa(env.SimLogLevel),
 			"HIVE_TEST_PATTERN": env.SimTestPattern,
 			"HIVE_RANDOM_SEED":  strconv.Itoa(env.SimRandomSeed),
+			"HTTP_PROXY":        os.Getenv("HTTP_PROXY"),
 		},
 	}
 	containerID, err := r.container.CreateContainer(ctx, r.simImages[sim], opts)

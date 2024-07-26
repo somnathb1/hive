@@ -9,3 +9,6 @@ simulators/**/Cargo.lock
 simulators/**/target
 hivesim-rs/Cargo.lock
 hivesim-rs/target
+
+scripts/experiments/*
+scripts/proxy/*
