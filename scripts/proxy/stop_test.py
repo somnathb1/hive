@@ -8,28 +8,31 @@ import urllib.request
 
 # Read the configuration file
 config = configparser.ConfigParser()
-config.read('/home/mitmproxy/.mitmproxy/config.ini')
+config.read(f'/home/mitmproxy/.mitmproxy/{os.getenv("MITMPROXY_CONFIG_NAME", "config")}.ini')
 container_id = None
+print("Config is:", os.getenv("MITMPROXY_CONFIG_NAME", "config"))
+print("Experiment ID is:", os.getenv("MITMPROXY_EXPERIMENT_ID", "debug"))
 
 def request(flow: http.HTTPFlow) -> None:
-    print(f"Sending request to: {flow.request.url}{flow.request.path}")
+    print(f"Sending request to: {flow.request.url}")
     test_end = config['settings'].get('test_end', None)
     post_url = config['settings']['target_url']
     copy_files = config['settings']['copy_files']
     experiment_id = os.getenv("MITMPROXY_EXPERIMENT_ID", "debug")
     if flow.request.method == "POST" and flow.request.path == test_end:
         sleep(10)
+        print("Starting copying files ...")
         if not copy_files or copy_files == "False":
             print("Copying files is disabled ...")
             return
         for key in config['copy_files']:
-            print("Starting copying files ...")
+
             if key.startswith('container_file_path_'):
                 print("Valid config is found for experiment: " + experiment_id)
                 file_number = key.split('_')[-1]
                 container_file_path = config['copy_files'][key]
-                host_file_path = config['copy_files'][f'host_file_path_{file_number}'] + "/" + experiment_id + config['copy_files'][f'container_file_path_{file_number}']
-
+                file_name = container_file_path.split('/')[-1]
+                host_file_path = config['copy_files'][f'host_file_path_{file_number}'] + "/" + experiment_id + "/" + file_name
                 # Create the POST request
                 data = {
                     "container_id": container_id,
@@ -51,7 +54,7 @@ def request(flow: http.HTTPFlow) -> None:
                         print(f"Sent POST request to {post_url} for file {container_file_path} to {host_file_path}")
                         print(f"Response status: {rp.status}")
                 except Exception as e:
-                    print(f"Error: {e}")
+                    print(f"Error: {e} occurred while sending the POST request to {post_url}")
                 sleep(config['settings'].getint('end_wait_time', 30))
     # Drop the request
     # flow.kill()

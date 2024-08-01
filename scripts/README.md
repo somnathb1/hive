@@ -22,6 +22,7 @@ Usage:
 -c|--client - client name, e.g. `nethermind-gnosis`
 -s|--simulator - simulator name, e.g. `ethereum/engine`
 -p|--proxy - IP address of the local machine and mitmproxy port, e.g. `192.168.3.49:8089`
+-pc|--proxy-config - path to the mitmproxy configuration file, e.g. `config` will lead to `./scripts/proxy/config.ini`
 
 ## Using mitmproxy
 To use mitmproxy, we need to run it on the local machine and set the proxy URL (`HTTP_PROXY` environment variable).

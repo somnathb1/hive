@@ -1,9 +1,10 @@
 #!/bin/bash
 # Default values
 PORT=8090
-EXPERIMENT="01"
+PROXY_PORT=8089
+EXPERIMENT="01-nethermind-withdrawals-jq"
 HIVEVIEW_PORT=3001
-
+PROXY_CONTAINER_NAME="recovery_proxy"
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -22,6 +23,11 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past value
       ;;
+    -pn|--proxy_container_name)
+      PROXY_CONTAINER_NAME="$2"
+      shift # past argument
+      shift # past value
+      ;;
     *)    # unknown option
       shift # past argument
       ;;
@@ -31,10 +37,10 @@ done
 echo "Recovery experiment: '$EXPERIMENT' and open mitmproxy on port '$PORT'"
 
 cp "scripts/experiments/$EXPERIMENT/$EXPERIMENT.har" "$PWD/scripts/proxy"
-docker stop recovery_proxy || echo "Container recovery_proxy does not started"
-docker rm recovery_proxy || echo "Container recovery_proxy does not exist"
+docker stop $PROXY_CONTAINER_NAME || echo "Container $PROXY_CONTAINER_NAME does not started"
+docker rm $PROXY_CONTAINER_NAME || echo "Container recovery_proxy does not exist"
 echo "Started mitmproxy on port 8090. To stop it run 'docker stop recovery_proxy'"
-docker run --name recovery_proxy -d -p $PORT:8082 -v $PWD/scripts/proxy:/home/mitmproxy/.mitmproxy mitmproxy/mitmproxy mitmweb --listen-host 0.0.0.0 --web-host 0.0.0.0 --listen-port 8089 --web-port 8082 --set ssl_insecure=true -r "/home/mitmproxy/.mitmproxy/$EXPERIMENT.har"
+docker run --name $PROXY_CONTAINER_NAME -d -p $PORT:8082 -p $PROXY_PORT:8089 -v $PWD/scripts/proxy:/home/mitmproxy/.mitmproxy mitmproxy/mitmproxy mitmweb --listen-host 0.0.0.0 --web-host 0.0.0.0 --listen-port 8089 --web-port 8082 --set ssl_insecure=true -r "/home/mitmproxy/.mitmproxy/$EXPERIMENT.har"
 
 PID=$(lsof -ti :$HIVEVIEW_PORT)
 
