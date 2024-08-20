@@ -207,7 +207,7 @@ func GenesisFactory(clientName string) client.Genesis {
 	switch clientName {
 	case "erigon-old_":
 		return &client.ErigonGenesis{}
-	case "nethermind_":
+	case "nethermind-old_":
 		return &client.NethermindChainSpec{}
 	default:
 		panic("unsupported client provided")

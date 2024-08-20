@@ -266,7 +266,7 @@ func GenesisStartOptionBasedOnClient(genesis client.Genesis, clientName string) 
 	switch clientName {
 	case "erigon-old":
 		return hivesim.WithDynamicFile("/genesis.json", bytesSource(out)), nil
-	case "nethermind":
+	case "nethermind-old":
 		return hivesim.WithDynamicFile("/chainspec.json", bytesSource(out)), nil
 	}
 	return hivesim.WithDynamicFile("/genesis.json", bytesSource(out)), nil

@@ -63,7 +63,7 @@ var Tests = []test.Spec{
 
 	&WithdrawalsBaseSpec{
 		BaseSpec: test.BaseSpec{
-			Name: "Gnosis Withdrawals Fork on Block 1",
+			Name: "Withdrawals Fork on Block 1",
 			About: `
 			Tests the withdrawals fork happening directly after genesis.
 			`,

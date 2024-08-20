@@ -53,7 +53,7 @@ var (
 	GasPrice         = big.NewInt(30 * params.GWei)
 	GasTipPrice      = big.NewInt(1 * params.GWei)
 	BlobGasPrice     = big.NewInt(1 * params.GWei)
-	NetworkID        = big.NewInt(7)
+	NetworkID        = big.NewInt(10202)
 	GenesisTimestamp = uint64(0x1234)
 
 	// RPC Timeout for every call
@@ -121,16 +121,13 @@ func init() {
 
 	// Fill the test accounts with deterministic addresses
 	for i := uint64(2); i < TestAccountCount; i++ {
-
-		for i := uint64(0); i < TestAccountCount; i++ {
-			bs := make([]byte, 8)
-			binary.BigEndian.PutUint64(bs, uint64(i))
-			b := sha256.Sum256(bs)
-			k, err := crypto.ToECDSA(b[:])
-			if err != nil {
-				panic(err)
-			}
-			TestAccounts[i] = &TestAccount{key: k, index: i}
+		bs := make([]byte, 8)
+		binary.BigEndian.PutUint64(bs, uint64(i))
+		b := sha256.Sum256(bs)
+		k, err := crypto.ToECDSA(b[:])
+		if err != nil {
+			panic(err)
 		}
+		TestAccounts[i] = &TestAccount{key: k, index: i}
 	}
 }

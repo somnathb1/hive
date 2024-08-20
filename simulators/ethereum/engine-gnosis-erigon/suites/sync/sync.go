@@ -197,6 +197,6 @@ func (NethermindSyncVariantGenerator) Configure(TTD *big.Int, GenesisFile string
 
 // Lists the types of sync supported by each client.
 var ClientToSyncVariantGenerator = map[string]SyncVariantGenerator{
-	"go-ethereum": GethSyncVariantGenerator{},
-	"nethermind":  NethermindSyncVariantGenerator{},
+	"go-ethereum":    GethSyncVariantGenerator{},
+	"nethermind-old": NethermindSyncVariantGenerator{},
 }

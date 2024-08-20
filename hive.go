@@ -34,6 +34,7 @@ func main() {
 		simDevMode            = flag.Bool("dev", false, "Only starts the simulator API endpoint (listening at 127.0.0.1:3000 by default) without starting any simulators.")
 		simDevModeAPIEndpoint = flag.String("dev.addr", "127.0.0.1:3000", "Endpoint that the simulator API listens on")
 		useCredHelper         = flag.Bool("docker.cred-helper", false, "configure docker authentication using locally-configured credential helper")
+		overrideDockerfile    = flag.String("docker.override-dockerfile", "", "override the dockerfile used to build the client image")
 
 		clientsFile = flag.String("client-file", "", `YAML `+"`file`"+` containing client configurations.`)
 
@@ -79,6 +80,7 @@ func main() {
 		Inventory:           inv,
 		PullEnabled:         *dockerPull,
 		UseCredentialHelper: *useCredHelper,
+		OverrideDockerfile:  *overrideDockerfile,
 	}
 	if *dockerNoCache != "" {
 		re, err := regexp.Compile(*dockerNoCache)

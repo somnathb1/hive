@@ -14,7 +14,6 @@ import (
 	"github.com/ethereum/hive/simulators/ethereum/engine/helper"
 	suite_auth "github.com/ethereum/hive/simulators/ethereum/engine/suites/auth"
 	suite_cancun "github.com/ethereum/hive/simulators/ethereum/engine/suites/cancun"
-	suite_cancun_gnosis "github.com/ethereum/hive/simulators/ethereum/engine/suites/cancun_gnosis"
 	suite_engine "github.com/ethereum/hive/simulators/ethereum/engine/suites/engine"
 	suite_excap "github.com/ethereum/hive/simulators/ethereum/engine/suites/exchange_capabilities"
 	suite_withdrawals "github.com/ethereum/hive/simulators/ethereum/engine/suites/withdrawals"
@@ -53,11 +52,6 @@ var (
 		Description: `
 	Test Engine API on Cancun.`[1:],
 	}
-	cancun_gnosis = hivesim.Suite{
-		Name: "engine-cancun-gnosis",
-		Description: `
-	Test Engine API on Cancun Gnosis.`[1:],
-	}
 )
 
 func main() {
@@ -91,12 +85,6 @@ func main() {
 		Run:         makeRunner(suite_cancun.Tests, "full"),
 		AlwaysRun:   true,
 	})
-	cancun_gnosis.Add(hivesim.TestSpec{
-		Name:        "engine-cancun-gnosis test loader",
-		Description: "",
-		Run:         makeRunner(suite_cancun_gnosis.Tests, "full"),
-		AlwaysRun:   true,
-	})
 	simulator := hivesim.New()
 
 	// Mark suites for execution
@@ -106,7 +94,6 @@ func main() {
 	// hivesim.MustRunSuite(simulator, syncSuite)
 	hivesim.MustRunSuite(simulator, withdrawals)
 	hivesim.MustRunSuite(simulator, cancun)
-	hivesim.MustRunSuite(simulator, cancun_gnosis)
 }
 
 func makeRunner(tests []test.Spec, nodeType string) func(t *hivesim.T) {

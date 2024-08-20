@@ -11,6 +11,8 @@ PROXY=""
 MITMPROXY_ADDITIONAL_ARGS='-s "/home/mitmproxy/.mitmproxy/stop_test.py"'
 MITMPROXY_CONFIG_NAME="config"
 PROXY_CONTAINER_NAME="test_run_proxy"
+GO_SERVER_PORT=9096
+DEBUG=0
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -44,6 +46,11 @@ while [[ $# -gt 0 ]]; do
       shift
       shift
       ;;
+    --debug)
+      DEBUG=1
+      shift
+      shift
+      ;;
     *)    # unknown option
       shift # past argument
       ;;
@@ -52,8 +59,8 @@ done
 
 echo "Started test: '$TEST_NAME' and experiment: '$EXPERIMENT' with client: '$CLIENT' and simulator: '$SIMULATOR'"
 
-echo "Starting docker server on port 9090"
-go run scripts/server.go -port 9090 &
+echo "Starting docker server on port $GO_SERVER_PORT"
+go run scripts/server.go -port $GO_SERVER_PORT &
 
 if [ "$PROXY" == "" ]; then
   echo "Proxy not set"
@@ -67,7 +74,12 @@ else
   sleep 5
 fi
 
-HTTP_PROXY="$PROXY" ./hive --sim "$SIMULATOR" --sim.limit "$TEST_NAME" --client "$CLIENT" --loglevel="$CLIENT_LOG_LEVEL" --sim.loglevel="$SIMULATOR_LOG_LEVEL" --docker.output --results-root="scripts/experiments/$EXPERIMENT/runs" --dev.addr="127.0.0.1:3000"
+DOCKER_FILE="Dockerfile"
+if [ "$DEBUG" == 1 ]; then
+  DOCKER_FILE="Dockerfile.debug"
+fi
+
+HTTP_PROXY="$PROXY" ./hive --sim "$SIMULATOR" --sim.limit "$TEST_NAME" --client "$CLIENT" --loglevel="$CLIENT_LOG_LEVEL" --sim.loglevel="$SIMULATOR_LOG_LEVEL" --docker.output --results-root="scripts/experiments/$EXPERIMENT/runs" --dev.addr="127.0.0.1:3000" --docker.override-dockerfile="$DOCKER_FILE"
 
 if [ "$PROXY" == "" ]; then
   echo "No need to stop proxy"
@@ -80,6 +92,6 @@ else
 fi
 
 echo "Stopping docker server"
-curl -X POST "http://localhost:9090/stop"
+curl -X POST "http://localhost:$GO_SERVER_PORT/stop"
 
 echo "Finished test: '$TEST_NAME' and experiment: '$EXPERIMENT'"
