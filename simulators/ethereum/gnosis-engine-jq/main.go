@@ -166,17 +166,23 @@ func makeRunner(tests []test.Spec, nodeType string) func(t *hivesim.T) {
 
 			timestamp := new(big.Int).SetUint64(getTimestamp(currentTest))
 
+			if currentTest.GetMainFork() != "Cancun" {
+				globals.GenesisTimestamp = timestamp.Uint64()
+			}
+
 			// Load the genesis file specified and dynamically bundle it.
 			genesis := currentTest.GetGenesis()
 			forkConfig := currentTest.GetForkConfig()
 
 			cancunTimestamp := new(big.Int).Add(timestamp, big.NewInt(0))
 			shanghaiTimestamp := new(big.Int).Add(timestamp, big.NewInt(-1000000))
-			forkConfig.ShanghaiTimestamp = shanghaiTimestamp
 			forkConfig.CancunTimestamp = cancunTimestamp
+
 			if currentTest.GetMainFork() == "Cancun" {
-				forkConfig.ShanghaiTimestamp = forkConfig.CancunTimestamp
+				shanghaiTimestamp = forkConfig.CancunTimestamp
 			}
+
+			forkConfig.ShanghaiTimestamp = shanghaiTimestamp
 
 			if forkConfig == nil {
 				// Test cannot be configured as is for current fork, skip

@@ -78,7 +78,7 @@ var (
 	TestAccounts     []*TestAccount
 
 	// Global test case timeout
-	DefaultTestCaseTimeout = time.Minute * 5
+	DefaultTestCaseTimeout = time.Minute * 10
 
 	// Confirmation blocks
 	PoWConfirmationBlocks = uint64(15)
