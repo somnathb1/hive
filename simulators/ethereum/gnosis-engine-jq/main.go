@@ -100,8 +100,8 @@ func main() {
 
 	// Mark suites for execution
 	//hivesim.MustRunSuite(simulator, engine)
-	//hivesim.MustRunSuite(simulator, auth)
-	//hivesim.MustRunSuite(simulator, excap)
+	hivesim.MustRunSuite(simulator, auth)
+	hivesim.MustRunSuite(simulator, excap)
 	// hivesim.MustRunSuite(simulator, syncSuite)
 	hivesim.MustRunSuite(simulator, withdrawals)
 	hivesim.MustRunSuite(simulator, cancun)

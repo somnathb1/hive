@@ -50,7 +50,7 @@ FLAGS="$FLAGS --fakepow"
 # Create the data directory.
 mkdir /erigon-hive-datadir
 FLAGS="$FLAGS --datadir /erigon-hive-datadir"
-FLAGS="$FLAGS --db.size.limit 2GB"
+FLAGS="$FLAGS --db.size.limit 2GB --sync.parallel-state-flushing=false"
 
 # If a specific network ID is requested, use that
 if [ "$HIVE_NETWORK_ID" != "" ]; then
