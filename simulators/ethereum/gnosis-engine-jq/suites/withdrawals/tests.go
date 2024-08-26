@@ -6,9 +6,10 @@ import (
 	"crypto/rand"
 	"encoding/json"
 	"fmt"
-	"github.com/ethereum/go-ethereum/core"
 	"math/big"
 	"time"
+
+	"github.com/ethereum/go-ethereum/core"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	beacon "github.com/ethereum/go-ethereum/beacon/engine"
@@ -695,6 +696,7 @@ var Tests = []test.Spec{
 				B: block with claim Tx
 				- Compares balances and events values with withdrawals from CL
 				`,
+				TimeoutSeconds: 1800,
 			},
 			WithdrawalsForkHeight: 2,
 			WithdrawalsBlockCount: 8,
