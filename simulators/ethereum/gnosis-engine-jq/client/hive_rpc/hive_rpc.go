@@ -4,13 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/ethereum/go-ethereum/core"
 	"math/big"
 	"net"
 	"net/http"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/ethereum/go-ethereum/core"
 
 	api "github.com/ethereum/go-ethereum/beacon/engine"
 	"github.com/ethereum/go-ethereum/common"
@@ -343,19 +344,15 @@ func (ec *HiveRPCEngineClient) HeaderByNumber(ctx context.Context, number *big.I
 
 	url, _ := ec.Url()
 	var requestBody string
-	if number == nil {
+	var blockNum = toBlockNumArg(number)
 
-		requestBody = fmt.Sprintf(`{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["%v",true],"id":1}`, "latest")
-	} else {
+	requestBody = fmt.Sprintf(`{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["%v",true],"id":1}`, blockNum)
 
-		requestBody = fmt.Sprintf(`{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["%v",true],"id":1}`, number.Int64())
-	}
-
-	blockHash, err := getBlockHash(url, requestBody)
+	byNumber, err := ec.Client.BlockByNumber(ctx, number)
 	if err != nil {
 		return nil, err
 	}
-	byNumber, err := ec.Client.BlockByNumber(ctx, number)
+	blockHash, err := getBlockHash(url, requestBody)
 	if err != nil {
 		return nil, err
 	}

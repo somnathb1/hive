@@ -804,10 +804,14 @@ func (tec *TestEngineClient) TestHeaderByNumber(number *big.Int) *HeaderResponse
 	ctx, cancel := context.WithTimeout(tec.TestContext, globals.RPCTimeout)
 	defer cancel()
 	header, err := tec.Engine.HeaderByNumber(ctx, number)
+	var blockHeader *types.Header = nil
+	if header != nil {
+		blockHeader = &header.Header
+	}
 	ret := &HeaderResponseExpectObject{
 		ExpectEnv: &ExpectEnv{Env: tec.Env},
 		Call:      "HeaderByNumber",
-		Header:    &header.Header,
+		Header:    blockHeader,
 		Error:     err,
 	}
 	if err, ok := err.(rpc.Error); ok {

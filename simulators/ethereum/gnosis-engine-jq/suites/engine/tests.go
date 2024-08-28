@@ -252,53 +252,57 @@ func init() {
 	}
 
 	// Invalid Ancestor Re-Org Tests (Reveal Via Sync)
-	spec := test.BaseSpec{
-		TimeoutSeconds:   60,
-		SlotsToSafe:      big.NewInt(32),
-		SlotsToFinalized: big.NewInt(64),
-	}
-	for _, invalidField := range []helper.InvalidPayloadBlockField{
-		helper.InvalidStateRoot,
-		helper.InvalidReceiptsRoot,
-		// TODO: helper.InvalidNumber, Test is causing a panic on the secondary node, disabling for now.
-		helper.InvalidGasLimit,
-		helper.InvalidGasUsed,
-		helper.InvalidTimestamp,
-		// TODO: helper.InvalidPrevRandao, Test consistently fails with Failed to set invalid block: missing trie node.
-		helper.RemoveTransaction,
-		helper.InvalidTransactionSignature,
-		helper.InvalidTransactionNonce,
-		helper.InvalidTransactionGas,
-		helper.InvalidTransactionGasPrice,
-		helper.InvalidTransactionValue,
-		// helper.InvalidOmmers, Unsupported now
-	} {
-		for _, reOrgFromCanonical := range []bool{false, true} {
-			invalidIndex := 9
-			if invalidField == helper.InvalidReceiptsRoot ||
-				invalidField == helper.InvalidGasLimit ||
-				invalidField == helper.InvalidGasUsed ||
-				invalidField == helper.InvalidTimestamp ||
-				invalidField == helper.InvalidPrevRandao {
-				invalidIndex = 8
-			}
-			if invalidField == helper.InvalidStateRoot {
+	/*
+		TODO: Tests are disabled since they rely on a Geth node (running within test process) for P2P communcation and block production. Possible fixes: 1: Somehow re-write the tests to use dockerized node; 2: Wait for Gnosis support for Geth.
+
+		spec := test.BaseSpec{
+			TimeoutSeconds:   60,
+			SlotsToSafe:      big.NewInt(32),
+			SlotsToFinalized: big.NewInt(64),
+		}
+		for _, invalidField := range []helper.InvalidPayloadBlockField{
+			helper.InvalidStateRoot,
+			helper.InvalidReceiptsRoot,
+			// TODO: helper.InvalidNumber, Test is causing a panic on the secondary node, disabling for now.
+			helper.InvalidGasLimit,
+			helper.InvalidGasUsed,
+			helper.InvalidTimestamp,
+			// TODO: helper.InvalidPrevRandao, Test consistently fails with Failed to set invalid block: missing trie node.
+			helper.RemoveTransaction,
+			helper.InvalidTransactionSignature,
+			helper.InvalidTransactionNonce,
+			helper.InvalidTransactionGas,
+			helper.InvalidTransactionGasPrice,
+			helper.InvalidTransactionValue,
+			// helper.InvalidOmmers, Unsupported now
+		} {
+			for _, reOrgFromCanonical := range []bool{false, true} {
+				invalidIndex := 9
+				if invalidField == helper.InvalidReceiptsRoot ||
+					invalidField == helper.InvalidGasLimit ||
+					invalidField == helper.InvalidGasUsed ||
+					invalidField == helper.InvalidTimestamp ||
+					invalidField == helper.InvalidPrevRandao {
+					invalidIndex = 8
+				}
+				if invalidField == helper.InvalidStateRoot {
+					Tests = append(Tests, InvalidMissingAncestorReOrgSyncTest{
+						BaseSpec:           spec,
+						InvalidField:       invalidField,
+						ReOrgFromCanonical: reOrgFromCanonical,
+						EmptyTransactions:  true,
+						InvalidIndex:       invalidIndex,
+					})
+				}
 				Tests = append(Tests, InvalidMissingAncestorReOrgSyncTest{
 					BaseSpec:           spec,
 					InvalidField:       invalidField,
 					ReOrgFromCanonical: reOrgFromCanonical,
-					EmptyTransactions:  true,
 					InvalidIndex:       invalidIndex,
 				})
 			}
-			Tests = append(Tests, InvalidMissingAncestorReOrgSyncTest{
-				BaseSpec:           spec,
-				InvalidField:       invalidField,
-				ReOrgFromCanonical: reOrgFromCanonical,
-				InvalidIndex:       invalidIndex,
-			})
 		}
-	}
+	*/
 
 	// Re-org using the Engine API tests
 
