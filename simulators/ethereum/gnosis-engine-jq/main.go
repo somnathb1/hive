@@ -99,7 +99,7 @@ func main() {
 	simulator := hivesim.New()
 
 	// Mark suites for execution
-	//hivesim.MustRunSuite(simulator, engine)
+	hivesim.MustRunSuite(simulator, engine)
 	hivesim.MustRunSuite(simulator, auth)
 	hivesim.MustRunSuite(simulator, excap)
 	// hivesim.MustRunSuite(simulator, syncSuite)
@@ -173,6 +173,11 @@ func makeRunner(tests []test.Spec, nodeType string) func(t *hivesim.T) {
 			// Load the genesis file specified and dynamically bundle it.
 			genesis := currentTest.GetGenesis()
 			forkConfig := currentTest.GetForkConfig()
+			if forkConfig == nil {
+				// Test cannot be configured as is for current fork, skip
+				fmt.Printf("skipping test \"%s\" because fork configuration is not possible\n", currentTestName)
+				continue
+			}
 
 			cancunTimestamp := new(big.Int).Add(timestamp, big.NewInt(0))
 			shanghaiTimestamp := new(big.Int).Add(timestamp, big.NewInt(-1000000))
@@ -184,11 +189,6 @@ func makeRunner(tests []test.Spec, nodeType string) func(t *hivesim.T) {
 
 			forkConfig.ShanghaiTimestamp = shanghaiTimestamp
 
-			if forkConfig == nil {
-				// Test cannot be configured as is for current fork, skip
-				fmt.Printf("skipping test \"%s\" because fork configuration is not possible\n", currentTestName)
-				continue
-			}
 			forkConfig.ConfigGenesis(genesis)
 			genesisStartOption, err := helper.GenesisStartOption(genesis)
 			if err != nil {
