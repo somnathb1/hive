@@ -1,16 +1,10 @@
 name: Daily Run Erigon Withdrawals
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Run every day at midnight UTC
   workflow_dispatch:
   push:
     branches:
-      - reflow 
-  pull_request:
-    branches:
-      - reflow 
-    types: [ closed ]
+      - gnosis 
 
 jobs:
   hive-run:
