@@ -5,51 +5,36 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net"
 	"net/http"
-	"os"
-	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/hive/hivesim"
+	"github.com/tidwall/gjson"
+	"github.com/tidwall/sjson"
 	diff "github.com/yudai/gojsondiff"
 	"github.com/yudai/gojsondiff/formatter"
 )
 
 var (
-	clientEnv = hivesim.Params{
-		"HIVE_NODETYPE":       "full",
-		"HIVE_NETWORK_ID":     "1337",
-		"HIVE_CHAIN_ID":       "1337",
-		"HIVE_FORK_HOMESTEAD": "0",
-		//"HIVE_FORK_DAO_BLOCK":      2000,
-		"HIVE_FORK_TANGERINE":                   "0",
-		"HIVE_FORK_SPURIOUS":                    "0",
-		"HIVE_FORK_BYZANTIUM":                   "0",
-		"HIVE_FORK_CONSTANTINOPLE":              "0",
-		"HIVE_FORK_PETERSBURG":                  "0",
-		"HIVE_FORK_ISTANBUL":                    "0",
-		"HIVE_FORK_BERLIN":                      "0",
-		"HIVE_FORK_LONDON":                      "0",
-		"HIVE_SHANGHAI_TIMESTAMP":               "0",
-		"HIVE_TERMINAL_TOTAL_DIFFICULTY":        "0",
-		"HIVE_TERMINAL_TOTAL_DIFFICULTY_PASSED": "1",
-	}
 	files = map[string]string{
 		"genesis.json": "./tests/genesis.json",
 		"chain.rlp":    "./tests/chain.rlp",
 	}
 )
 
-type test struct {
-	Name string
-	Data []byte
-}
-
 func main() {
+	// Load fork environment.
+	var clientEnv hivesim.Params
+	err := common.LoadJSON("tests/forkenv.json", &clientEnv)
+	if err != nil {
+		panic(err)
+	}
+
+	// Run the test suite.
 	suite := hivesim.Suite{
 		Name: "rpc-compat",
 		Description: `
@@ -64,6 +49,7 @@ conformance with the execution API specification.`[1:],
 		Parameters:  clientEnv,
 		Files:       files,
 		Run: func(t *hivesim.T, c *hivesim.Client) {
+			sendForkchoiceUpdated(t, c)
 			runAllTests(t, c, c.Type)
 		},
 		AlwaysRun: true,
@@ -75,13 +61,14 @@ conformance with the execution API specification.`[1:],
 func runAllTests(t *hivesim.T, c *hivesim.Client, clientName string) {
 	_, testPattern := t.Sim.TestPattern()
 	re := regexp.MustCompile(testPattern)
-
 	tests := loadTests(t, "tests", re)
 	for _, test := range tests {
+		test := test
 		t.Run(hivesim.TestSpec{
-			Name: fmt.Sprintf("%s (%s)", test.Name, clientName),
+			Name:        fmt.Sprintf("%s (%s)", test.name, clientName),
+			Description: test.comment,
 			Run: func(t *hivesim.T) {
-				if err := runTest(t, c, test.Data); err != nil {
+				if err := runTest(t, c, &test); err != nil {
 					t.Fatal(err)
 				}
 			},
@@ -89,63 +76,69 @@ func runAllTests(t *hivesim.T, c *hivesim.Client, clientName string) {
 	}
 }
 
-func runTest(t *hivesim.T, c *hivesim.Client, data []byte) error {
+func runTest(t *hivesim.T, c *hivesim.Client, test *rpcTest) error {
 	var (
-		client = &http.Client{
-			Timeout: 5 * time.Second,
-			Transport: &loggingRoundTrip{
-				t:     t,
-				inner: http.DefaultTransport,
-			},
-		}
-		url  = fmt.Sprintf("http://%s", net.JoinHostPort(c.IP.String(), "8545"))
-		err  error
-		resp []byte
+		client    = &http.Client{Timeout: 5 * time.Second}
+		url       = fmt.Sprintf("http://%s", net.JoinHostPort(c.IP.String(), "8545"))
+		err       error
+		respBytes []byte
 	)
 
-	for _, line := range strings.Split(string(data), "\n") {
-		line = strings.TrimSpace(line)
-		switch {
-		case len(line) == 0 || strings.HasPrefix(line, "//"):
-			// Skip comments, blank lines.
-			continue
-		case strings.HasPrefix(line, ">> "):
+	for _, msg := range test.messages {
+		if msg.send {
 			// Send request.
-			resp, err = postHttp(client, url, []byte(line[3:]))
+			t.Log(">> ", msg.data)
+			respBytes, err = postHttp(client, url, strings.NewReader(msg.data))
 			if err != nil {
 				return err
 			}
-		case strings.HasPrefix(line, "<< "):
-			// Read response. Unmarshal to interface{} to verify deep equality. Marshal
-			// again to remove padding differences and to print each field in the same
-			// order. This makes it easy to spot any discrepancies.
-			if resp == nil {
+		} else {
+			// Receive a response.
+			if respBytes == nil {
 				return fmt.Errorf("invalid test, response before request")
 			}
-			want := []byte(strings.TrimSpace(line)[3:]) // trim leading "<< "
-			// Now compare.
-			d, err := diff.New().Compare(resp, want)
+			expectedData := msg.data
+			resp := string(bytes.TrimSpace(respBytes))
+			t.Log("<< ", resp)
+			if !gjson.Valid(resp) {
+				return fmt.Errorf("invalid JSON response")
+			}
+
+			// Patch JSON to remove error messages. We only do this in the specific case
+			// where an error is expected AND returned by the client.
+			var errorRedacted bool
+			if gjson.Get(resp, "error").Exists() && gjson.Get(expectedData, "error").Exists() {
+				resp, _ = sjson.Delete(resp, "error.message")
+				expectedData, _ = sjson.Delete(expectedData, "error.message")
+				errorRedacted = true
+			}
+
+			// Compare responses.
+			d, err := diff.New().Compare([]byte(resp), []byte(expectedData))
 			if err != nil {
 				return fmt.Errorf("failed to unmarshal value: %s\n", err)
 			}
+
 			// If there is a discrepancy, return error.
 			if d.Modified() {
-				var got map[string]interface{}
-				json.Unmarshal(resp, &got)
+				if errorRedacted {
+					t.Log("note: error messages removed from comparison")
+				}
+				var got map[string]any
+				json.Unmarshal([]byte(resp), &got)
 				config := formatter.AsciiFormatterConfig{
 					ShowArrayIndex: true,
 					Coloring:       false,
 				}
 				formatter := formatter.NewAsciiFormatter(got, config)
 				diffString, _ := formatter.Format(d)
-				return fmt.Errorf("response differs from expected:\n%s", diffString)
+				return fmt.Errorf("response differs from expected (-- client, ++ test):\n%s", diffString)
 			}
-			resp = nil
-		default:
-			t.Fatalf("invalid line in test script: %s", line)
+			respBytes = nil
 		}
 	}
-	if resp != nil {
+
+	if respBytes != nil {
 		t.Fatalf("unhandled response in test case")
 	}
 	return nil
@@ -153,9 +146,8 @@ func runTest(t *hivesim.T, c *hivesim.Client, data []byte) error {
 
 // sendHttp sends an HTTP POST with the provided json data and reads the
 // response into a byte slice and returns it.
-func postHttp(c *http.Client, url string, d []byte) ([]byte, error) {
-	data := bytes.NewBuffer(d)
-	req, err := http.NewRequest("POST", url, data)
+func postHttp(c *http.Client, url string, d io.Reader) ([]byte, error) {
+	req, err := http.NewRequest("POST", url, d)
 	if err != nil {
 		return nil, fmt.Errorf("error building request: %v", err)
 	}
@@ -167,66 +159,20 @@ func postHttp(c *http.Client, url string, d []byte) ([]byte, error) {
 	return io.ReadAll(resp.Body)
 }
 
-// loggingRoundTrip writes requests and responses to the test log.
-type loggingRoundTrip struct {
-	t     *hivesim.T
-	inner http.RoundTripper
-}
-
-func (rt *loggingRoundTrip) RoundTrip(req *http.Request) (*http.Response, error) {
-	// Read and log the request body.
-	reqBytes, err := ioutil.ReadAll(req.Body)
-	req.Body.Close()
-	if err != nil {
-		return nil, err
+// sendForkchoiceUpdated delivers the initial FcU request to the client.
+func sendForkchoiceUpdated(t *hivesim.T, client *hivesim.Client) {
+	var request struct {
+		Method string
+		Params []any
 	}
-	rt.t.Logf(">>  %s", bytes.TrimSpace(reqBytes))
-	reqCopy := *req
-	reqCopy.Body = ioutil.NopCloser(bytes.NewReader(reqBytes))
-
-	// Do the round trip.
-	resp, err := rt.inner.RoundTrip(&reqCopy)
-	if err != nil {
-		return nil, err
+	if err := common.LoadJSON("tests/headfcu.json", &request); err != nil {
+		t.Fatal("error loading forkchoiceUpdated:", err)
 	}
-	defer resp.Body.Close()
-
-	// Read and log the response bytes.
-	respBytes, err := ioutil.ReadAll(resp.Body)
+	t.Logf("sending %s: %v", request.Method, request.Params)
+	var resp any
+	err := client.EngineAPI().Call(&resp, request.Method, request.Params...)
 	if err != nil {
-		return nil, err
+		t.Fatal("client rejected forkchoiceUpdated:", err)
 	}
-	respCopy := *resp
-	respCopy.Body = ioutil.NopCloser(bytes.NewReader(respBytes))
-	rt.t.Logf("<<  %s", bytes.TrimSpace(respBytes))
-	return &respCopy, nil
-}
-
-// loadTests walks the given directory looking for *.io files to load.
-func loadTests(t *hivesim.T, root string, re *regexp.Regexp) []test {
-	tests := make([]test, 0)
-	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			t.Logf("unable to walk path: %s", err)
-			return err
-		}
-		if info.IsDir() {
-			return nil
-		}
-		if fname := info.Name(); !strings.HasSuffix(fname, ".io") {
-			return nil
-		}
-		pathname := strings.TrimSuffix(strings.TrimPrefix(path, root), ".io")
-		if !re.MatchString(pathname) {
-			fmt.Println("skip", pathname)
-			return nil // skip
-		}
-		data, err := ioutil.ReadFile(path)
-		if err != nil {
-			return err
-		}
-		tests = append(tests, test{strings.TrimLeft(pathname, "/"), data})
-		return nil
-	})
-	return tests
+	t.Logf("response: %v", resp)
 }

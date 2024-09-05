@@ -35,13 +35,11 @@
 #
 #  - HIVE_MINER                enables mining. value is coinbase.
 #  - HIVE_MINER_EXTRA          extra-data field to set for newly minted blocks
-#  - HIVE_SKIP_POW             If set, skip PoW verification
 #  - HIVE_LOGLEVEL             Client log level
 #  - HIVE_GRAPHQL_ENABLED      If set, GraphQL is enabled on port 8545 and RPC is disabled
 #
 # These flags are not supported by the Besu hive client
 #
-#  - HIVE_TESTNET              whether testnet nonces (2^20) are needed
 #  - HIVE_FORK_DAO_VOTE        whether the node support (or opposes) the DAO fork
 
 set -e
@@ -63,9 +61,19 @@ esac
 FLAGS="--logging=$LOG --data-storage-format=BONSAI"
 
 # Configure the chain.
-jq -f /mapper.jq /genesis.json > /besugenesis.json
-echo -n "Genesis: "; cat /besugenesis.json
-FLAGS="$FLAGS --genesis-file=/besugenesis.json "
+mv /genesis.json /genesis-input.json
+jq -f /mapper.jq /genesis-input.json > /genesis.json
+FLAGS="$FLAGS --genesis-file=/genesis.json "
+
+# Dump genesis. 
+if [ "$HIVE_LOGLEVEL" -lt 4 ]; then
+    echo "Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):"
+    jq 'del(.alloc[] | select(.balance == "0x123450000000000000000"))' /genesis.json
+else
+    echo "Supplied genesis state:"
+    cat /genesis.json
+fi
+
 
 # Enable experimental 'berlin' hard-fork features if configured.
 #if [ -n "$HIVE_FORK_BERLIN" ]; then
@@ -75,10 +83,8 @@ FLAGS="$FLAGS --genesis-file=/besugenesis.json "
 # The client should start after loading the blocks, this option configures it.
 IMPORTFLAGS="--run"
 
-# Disable PoW check if requested.
-if [ -n "$HIVE_SKIP_POW" ]; then
-    IMPORTFLAGS="$IMPORTFLAGS --skip-pow-validation-enabled"
-fi
+# Skip PoW checks on import.
+IMPORTFLAGS="$IMPORTFLAGS --skip-pow-validation-enabled"
 
 # Load chain.rlp if present.
 if [ -f /chain.rlp ]; then
@@ -113,7 +119,7 @@ fi
 if [ "$HIVE_MINER_EXTRA" != "" ]; then
     FLAGS="$FLAGS --miner-extra-data=$HIVE_MINER_EXTRA"
 fi
-FLAGS="$FLAGS --min-gas-price=1 --tx-pool-price-bump=0 --tx-pool-limit-by-account-percentage=1"
+FLAGS="$FLAGS --min-gas-price=1 --tx-pool-price-bump=0"
 
 # Configure peer-to-peer networking.
 if [ "$HIVE_BOOTNODE" != "" ]; then
@@ -150,12 +156,7 @@ RPCFLAGS="$RPCFLAGS --rpc-ws-enabled --rpc-ws-api=DEBUG,ETH,NET,WEB3,ADMIN --rpc
 # Enable merge support if needed
 if [ "$HIVE_TERMINAL_TOTAL_DIFFICULTY" != "" ]; then
     echo "0x7365637265747365637265747365637265747365637265747365637265747365" > /jwtsecret
-    RPCFLAGS="$RPCFLAGS --engine-host-allowlist=* --engine-jwt-enabled --engine-jwt-secret /jwtsecret"
-fi
-
-# Enable KZG trusted setup if cancun timestamp is set, needed for custom genesis on Besu wtih Cancun
-if [ "$HIVE_CANCUN_TIMESTAMP " != "" ]; then
-    FLAGS="$FLAGS --kzg-trusted-setup=/trusted_setup.txt"
+    RPCFLAGS="$RPCFLAGS --engine-host-allowlist=* --engine-jwt-secret /jwtsecret"
 fi
 
 # Start Besu.

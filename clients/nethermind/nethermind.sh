@@ -15,7 +15,6 @@
 #  - HIVE_NETWORK_ID           network ID number to use for the eth protocol
 #  - HIVE_CHAIN_ID             network ID number to use for the eth protocol
 #  - HIVE_NODETYPE             sync and pruning selector (archive, full, light)
-#  - HIVE_SKIP_POW             If set, skip PoW verification during block import
 #
 # Forks:
 #
@@ -44,7 +43,6 @@
 #
 #  - HIVE_FORK_DAO_VOTE        whether the node support (or opposes) the DAO fork
 #  - HIVE_GRAPHQL_ENABLED      if set, GraphQL is enabled on port 8545
-#  - HIVE_TESTNET              whether testnet nonces (2^20) are needed
 
 # Immediately abort the script on any error encountered
 set -e
@@ -58,11 +56,18 @@ fi
 # Generate the genesis and chainspec file.
 mkdir -p /chainspec
 jq -f /mapper.jq /genesis.json > /chainspec/test.json
-jq . /chainspec/test.json
+
+# Dump genesis. 
+if [ "$HIVE_LOGLEVEL" -lt 4 ]; then
+    echo "Supplied genesis state (trimmed, use --sim.loglevel 4 or 5 for full output):"
+    jq 'del(.accounts[] | select(.balance == "0x123450000000000000000" or has("builtin")))' /chainspec/test.json
+else
+    echo "Supplied genesis state:"
+    cat /chainspec/test.json
+fi
 
 # Generate the config file.
 mkdir /configs
-echo "Supplied genesis state:" 
 jq -n -f /mkconfig.jq > /configs/test.cfg
 
 echo "test.cfg"
@@ -89,4 +94,4 @@ if [ "$HIVE_LOGLEVEL" != "" ]; then
 fi
 echo "Running Nethermind..."
 # The output is tee:d, via /log.txt, because the enode script uses that logfile to parse out the enode id
-dotnet /nethermind/Nethermind.Runner.dll --config /configs/test.cfg $LOG_FLAG 2>&1 | tee /log.txt
+dotnet /nethermind/nethermind.dll --config /configs/test.cfg $LOG_FLAG 2>&1 | tee /log.txt

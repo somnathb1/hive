@@ -3,3 +3,17 @@ workspace
 .idea/
 # build output
 /hive
+
+# build output for rust simulators and hivesim-rs files
+simulators/**/Cargo.lock
+simulators/**/target
+hivesim-rs/Cargo.lock
+hivesim-rs/target
+
+scripts/experiments/*
+scripts/proxy/*
+
+.DS_Store
+hiveview
+.lh/*
+simulators/eth2/go.work.sum

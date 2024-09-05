@@ -40,16 +40,18 @@ def to_bool:
 # Replace config in input.
 {
   "genesis": {
-    "coinbase"   : .coinbase,
-    "difficulty" : .difficulty,
-    "extraData"  : .extraData,
-    "gasLimit"   : .gasLimit,
-    "mixHash"    : .mixHash,
-    "nonce"      : .nonce,
-    "parentHash" : .parentHash,
-    "timestamp"  : .timestamp,
-    "alloc"      : .alloc,
-    "baseFeePerGas": .baseFeePerGas
+    "coinbase"     : .coinbase,
+    "difficulty"   : .difficulty,
+    "extraData"    : .extraData,
+    "gasLimit"     : .gasLimit,
+    "mixHash"      : .mixHash,
+    "nonce"        : .nonce,
+    "parentHash"   : .parentHash,
+    "timestamp"    : .timestamp,
+    "alloc"        : .alloc,
+    "baseFeePerGas": .baseFeePerGas,
+    "excessBlobGas": .excessBlobGas,
+    "blobGasUsed"  : .blobGasUsed
   }|remove_empty,
   "config": {
     "clique": (if env.HIVE_CLIQUE_PERIOD == null then null else {
@@ -69,7 +71,12 @@ def to_bool:
     "muirGlacierBlock": env.HIVE_FORK_MUIR_GLACIER|to_int,
     "berlinBlock": env.HIVE_FORK_BERLIN|to_int,
     "londonBlock": env.HIVE_FORK_LONDON|to_int,
+    "arrowGlacierBlock": env.HIVE_FORK_ARROW_GLACIER|to_int,
+    "grayGlacierBlock": env.HIVE_FORK_GRAY_GLACIER|to_int,
     "mergeForkBlock": env.HIVE_MERGE_BLOCK_ID|to_int,
     "terminalTotalDifficulty": env.HIVE_TERMINAL_TOTAL_DIFFICULTY|to_int,
+    "shanghaiTime": env.HIVE_SHANGHAI_TIMESTAMP|to_int,
+    "cancunTime": env.HIVE_CANCUN_TIMESTAMP|to_int,
+    "terminalTotalDifficultyPassed": true,
   }|remove_empty
 }

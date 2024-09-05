@@ -1,0 +1,14 @@
+{
+  "name": "Simulator",
+  "dockerFile": "Dockerfile",
+  "appPort": [
+    "8000:8000"
+  ],
+  "postCreateCommand": "ls -la",
+  "containerEnv": {
+    "MY_VARIABLE": "1"
+  },
+  "shutdownAction": "none",
+  "privileged": true,
+  "capAdd": []
+}

@@ -10,6 +10,8 @@ import (
 	"gopkg.in/inconshreveable/log15.v2"
 )
 
+const apiVersion = "1.25"
+
 // Config is the configuration of the docker backend.
 type Config struct {
 	Inventory libhive.Inventory
@@ -29,6 +31,8 @@ type Config struct {
 
 	// This tells the docker client whether to authenticate requests with credential helper
 	UseCredentialHelper bool
+	// This tells the docker client whether to build a debug container with delve for attaching debugger
+	OverrideDockerfile string
 }
 
 func Connect(dockerEndpoint string, cfg *Config) (*Builder, *ContainerBackend, error) {
@@ -39,9 +43,9 @@ func Connect(dockerEndpoint string, cfg *Config) (*Builder, *ContainerBackend, e
 	var client *docker.Client
 	var err error
 	if dockerEndpoint == "" {
-		client, err = docker.NewClientFromEnv()
+		client, err = docker.NewVersionedClientFromEnv(apiVersion)
 	} else {
-		client, err = docker.NewClient(dockerEndpoint)
+		client, err = docker.NewVersionedClient(apiVersion, dockerEndpoint)
 	}
 	if err != nil {
 		return nil, nil, fmt.Errorf("can't connect to docker: %v", err)

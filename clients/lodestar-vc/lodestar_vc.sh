@@ -22,6 +22,8 @@ do
 done
 
 metrics_option=$([[ "$HIVE_ETH2_METRICS_PORT" == "" ]] && echo "" || echo "--metrics --metrics.address=$CONTAINER_IP --metrics.port=$HIVE_ETH2_METRICS_PORT")
+builder_option=$([[ "$HIVE_ETH2_BUILDER_ENDPOINT" == "" ]] && echo "--builder.selection executiononly" || echo "--builder")
+echo BUILDER=$builder_option
 
 LOG=info
 case "$HIVE_LOGLEVEL" in
@@ -32,9 +34,6 @@ case "$HIVE_LOGLEVEL" in
     5)   LOG=trace ;;
 esac
 
-builder_option=$([[ "$HIVE_ETH2_BUILDER_ENDPOINT" == "" ]] && echo "" || echo "--builder --suggestedFeeRecipient 0xa94f5374Fce5edBC8E2a8697C15331677e6EbF0B")
-echo BUILDER=$builder_option
-
 echo Starting Lodestar Validator Client
 
 node /usr/app/node_modules/.bin/lodestar \
@@ -44,6 +43,7 @@ node /usr/app/node_modules/.bin/lodestar \
     --paramsFile=/hive/input/config.yaml \
     --keystoresDir="/data/validators" \
     --secretsDir="/data/secrets" \
+    --useProduceBlockV3 \
     $metrics_option $builder_option \
     --beaconNodes="http://$HIVE_ETH2_BN_API_IP:$HIVE_ETH2_BN_API_PORT"
 

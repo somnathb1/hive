@@ -3,12 +3,14 @@ package test
 import (
 	"context"
 	"math/big"
+	"math/rand"
 	"net/http"
 	"time"
 
 	"github.com/ethereum/hive/simulators/ethereum/engine/client"
 	"github.com/ethereum/hive/simulators/ethereum/engine/client/hive_rpc"
 	"github.com/ethereum/hive/simulators/ethereum/engine/clmock"
+	"github.com/ethereum/hive/simulators/ethereum/engine/config"
 	"github.com/ethereum/hive/simulators/ethereum/engine/globals"
 	"github.com/ethereum/hive/simulators/ethereum/engine/helper"
 
@@ -19,6 +21,7 @@ import (
 // Env is the environment of a single test.
 type Env struct {
 	*hivesim.T
+	*helper.TransactionSender
 	TestName string
 	Client   *hivesim.Client
 
@@ -28,17 +31,23 @@ type Env struct {
 	// Test context will be done after timeout to allow test to gracefully finish
 	TestContext context.Context
 
+	// Randomness source
+	Rand *rand.Rand
+
 	// RPC Clients
-	Engine     client.EngineClient
-	Eth        client.Eth
-	TestEngine *TestEngineClient
-	HiveEngine *hive_rpc.HiveRPCEngineClient
+	Engine      client.EngineClient
+	Eth         client.Eth
+	TestEngine  *TestEngineClient
+	HiveEngine  *hive_rpc.HiveRPCEngineClient
+	Engines     []client.EngineClient
+	TestEngines []*TestEngineClient
 
 	// Consensus Layer Mocker Instance
 	CLMock *clmock.CLMocker
 
 	// Client parameters used to launch the default client
 	Genesis      *core.Genesis
+	ForkConfig   *config.ForkConfig
 	ClientParams hivesim.Params
 	ClientFiles  hivesim.Params
 
@@ -46,15 +55,15 @@ type Env struct {
 	TestTransactionType helper.TestTransactionType
 }
 
-func Run(testSpec SpecInterface, ttd *big.Int, timeout time.Duration, t *hivesim.T, c *hivesim.Client, genesis *core.Genesis, cParams hivesim.Params, cFiles hivesim.Params) {
+func Run(testSpec Spec, ttd *big.Int, timeout time.Duration, t *hivesim.T, c *hivesim.Client, genesis *core.Genesis, randSource *rand.Rand, cParams hivesim.Params, cFiles hivesim.Params) {
 	// Setup the CL Mocker for this test
-	consensusConfig := testSpec.GetConsensusConfig()
+	forkConfig := testSpec.GetForkConfig()
 	clMocker := clmock.NewCLMocker(
 		t,
-		consensusConfig.SlotsToSafe,
-		consensusConfig.SlotsToFinalized,
-		big.NewInt(consensusConfig.SafeSlotsToImportOptimistically),
-		testSpec.GetForkConfig().ShanghaiTimestamp)
+		genesis,
+		forkConfig,
+		randSource,
+	)
 
 	// Send the CLMocker for configuration by the spec, if any.
 	testSpec.ConfigureCLMock(clMocker)
@@ -77,17 +86,23 @@ func Run(testSpec SpecInterface, ttd *big.Int, timeout time.Duration, t *hivesim
 
 	env := &Env{
 		T:                   t,
+		TransactionSender:   helper.NewTransactionSender(globals.TestAccounts, false),
 		TestName:            testSpec.GetName(),
 		Client:              c,
 		Engine:              ec,
+		Engines:             make([]client.EngineClient, 0),
 		Eth:                 ec,
 		HiveEngine:          ec,
 		CLMock:              clMocker,
 		Genesis:             genesis,
+		ForkConfig:          forkConfig,
 		ClientParams:        cParams,
 		ClientFiles:         cFiles,
 		TestTransactionType: testSpec.GetTestTransactionType(),
+		Rand:                randSource,
 	}
+	env.Engines = append(env.Engines, ec)
+	env.TestEngines = append(env.TestEngines, env.TestEngine)
 
 	// Before running the test, make sure Eth and Engine ports are open for the client
 	if err := hive_rpc.CheckEthEngineLive(c); err != nil {
