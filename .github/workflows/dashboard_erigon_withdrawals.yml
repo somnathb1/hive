@@ -1,0 +1,49 @@
+name: Daily Run Erigon Withdrawals
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run every day at midnight UTC
+  workflow_dispatch:
+  push:
+    branches:
+      - reflow 
+  pull_request:
+    branches:
+      - reflow 
+    types: [ closed ]
+
+jobs:
+  hive-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: stable
+          
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Install Linux packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install libsnappy-dev libc6-dev libc6 build-essential
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: reflow
+
+      - name: Download dependencies
+        run: go get -v ./...
+
+      - name: Build hive
+        run: go build -v -o hive hive.go
+
+      - name: Run Erigon Withdrawals tests
+        continue-on-error: true
+        run: |
+          ./hive --sim ethereum/engine-gnosis-erigon --sim.limit="withdrawals" --client erigon-old --results-root=${{ github.workspace }}/runs --loglevel=1 --client.checktimelimit=5m --sim.parallelism=4
